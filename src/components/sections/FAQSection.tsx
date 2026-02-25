@@ -1,8 +1,7 @@
-// src/components/sections/FAQSection.tsx
 'use client'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Plus, MessageCircle } from 'lucide-react'
+import { Plus, Minus, MessageSquare } from 'lucide-react'
 import Image from 'next/image'
 
 export default function FAQSection() {
@@ -12,7 +11,7 @@ export default function FAQSection() {
     {
       id: 1,
       question: "What's your approach to front-end development?",
-      answer: "I focus on clean, maintainable code and prioritize user experience. My approach involves close collaboration with designers to ensure pixel-perfect implementations and create smooth, interactive across all devices.",
+      answer: "I focus on clean, maintainable code and prioritize user experience. My approach involves close collaboration with designers to ensure exact implementation and seamless interactions across all devices.",
     },
     {
       id: 2,
@@ -29,6 +28,11 @@ export default function FAQSection() {
       question: "What's your approach to front-end development?",
       answer: "I focus on clean, maintainable code and prioritize user experience. My approach involves close collaboration with designers to ensure pixel-perfect implementations and create smooth, interactive across all devices.",
     },
+    {
+      id: 5,
+      question: "What's your approach to front-end development?",
+      answer: "I focus on clean, maintainable code and prioritize user experience. My approach involves close collaboration with designers to ensure pixel-perfect implementations and create smooth, interactive across all devices.",
+    },
   ]
 
   const toggleFAQ = (index: number) => {
@@ -40,7 +44,7 @@ export default function FAQSection() {
       id="faq"
       className="bg-background py-16 px-4 md:px-8 overflow-hidden"
     >
-      <div className="max-w-md mx-auto w-full">
+      <div className="max-w-md mx-auto w-full lg:max-w-5xl">
 
         {/* Card Container */}
         <motion.div
@@ -50,84 +54,87 @@ export default function FAQSection() {
           transition={{ duration: 0.5 }}
           className="bg-card rounded-3xl p-6 shadow-sm border border-border"
         >
-          {/* Icon */}
-          <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-            <MessageCircle className="w-5 h-5 text-primary" />
-          </div>
+          {/* Mobile: stacked, Desktop: two columns */}
+          <div className="flex flex-col lg:flex-row lg:gap-8">
 
-          {/* Title */}
-          <h2 className="text-2xl font-bold text-foreground mb-6">
-            Have Questions?
-          </h2>
+            {/* Left Column */}
+            <div className="lg:w-64 lg:shrink-0 flex flex-col justify-between">
+              <div>
+                {/* Icon */}
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                  <MessageSquare className="w-5 h-5 text-primary-300" />
+                </div>
 
-          {/* FAQ Accordion */}
-          <div className="space-y-3">
-            {faqs.map((faq, index) => (
-              <div
-                key={faq.id}
-                className="border-b border-border last:border-0 pb-3 last:pb-0"
-              >
-                {/* Question Button */}
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className="w-full flex items-start justify-between gap-4 text-left group"
-                >
-                  <span className={`text-sm font-semibold transition-colors ${
-                    openIndex === index ? 'text-primary' : 'text-foreground'
-                  }`}>
-                    {faq.question}
-                  </span>
-                  <Plus
-                    className={`w-5 h-5 flex-shrink-0 transition-all duration-300 ${
-                      openIndex === index
-                        ? 'rotate-45 text-primary'
-                        : 'text-muted-foreground'
-                    }`}
-                  />
-                </button>
-
-                {/* Answer */}
-                <AnimatePresence>
-                  {openIndex === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <p className="text-sm text-muted-foreground leading-relaxed mt-3">
-                        {faq.answer}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* Title */}
+                <h2 className="text-2xl font-bold text-foreground mb-6">
+                  Have Questions?
+                </h2>
               </div>
-            ))}
-          </div>
 
-          {/* Avatar and CTA */}
-          <div className="mt-8 pt-6 border-t border-border">
-            {/* Avatar */}
-            <div className="w-12 h-12 rounded-full bg-muted mb-4 overflow-hidden">
-              <Image
-                src="/assets/images/avatar.jpg"
-                alt="Avatar"
-                width={48}
-                height={48}
-                className="object-cover"
-              />
+              {/* Avatar + CTA nested card */}
+              <div className="mt-6 lg:mt-0 bg-white rounded-2xl p-4 border-2 border-border">
+                <div className="w-12 h-12 rounded-full bg-secondary-300 mb-4 overflow-hidden">
+                  <Image
+                    src="/assets/images/Your_Pic.svg"
+                    alt="Avatar"
+                    width={48}
+                    height={48}
+                    className="object-contain mt-1"
+                  />
+                </div>
+                <p className="text-sm text-black mb-4">
+                  Have more questions? Send me a message
+                </p>
+                <button className="w-full bg-primary-300 text-white font-thin py-3 px-6 rounded-full hover:bg-primary/90 transition-colors duration-300">
+                  Get in touch
+                </button>
+              </div>
             </div>
 
-            {/* Text */}
-            <p className="text-sm text-muted-foreground mb-4">
-              Have more questions? Send me a message
-            </p>
+            {/* Right Column - FAQ Accordion */}
+            <div className="flex-1 mt-6 lg:mt-0">
+              <div className="space-y-3">
+                {faqs.map((faq, index) => (
+                  <div
+                    key={faq.id}
+                    className="border-b border-border last:border-0 pb-3 last:pb-0"
+                  >
+                    <button
+                      onClick={() => toggleFAQ(index)}
+                      className="w-full flex items-start justify-between gap-4 text-left"
+                    >
+                      <span className={`text-sm font-semibold transition-colors ${
+                        openIndex === index ? 'text-primary-300' : 'text-foreground'
+                      }`}>
+                        {faq.question}
+                      </span>
+                      {openIndex === index ? (
+                        <Minus className="w-5 h-5 flex-shrink-0 text-primary-300" />
+                      ) : (
+                        <Plus className="w-5 h-5 flex-shrink-0 text-muted-foreground" />
+                      )}
+                    </button>
 
-            {/* CTA Button */}
-            <button className="w-full bg-primary text-white font-semibold py-3 px-6 rounded-full hover:bg-primary/90 transition-colors duration-300">
-              Get in touch
-            </button>
+                    <AnimatePresence>
+                      {openIndex === index && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <p className="text-sm text-muted-foreground leading-relaxed mt-3">
+                            {faq.answer}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </motion.div>
 

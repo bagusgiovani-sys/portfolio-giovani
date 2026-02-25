@@ -1,4 +1,3 @@
-// src/components/sections/TestimonialsSection.tsx
 'use client'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -12,7 +11,7 @@ export default function TestimonialsSection() {
     {
       id: 1,
       company: 'Trustpilot',
-      logo: '/assets/images/trustpilot-logo.svg',
+      logo: '/assets/icons/CompanyLogo/trustpilot_logo.svg',
       text: "Thanks to their expertise, our website is now faster, more responsive, and visually stunning. We've seen a significant increase in user engagement!",
       author: 'Robert Lewandowski',
       role: 'Head of Engineering, Upwork',
@@ -21,7 +20,7 @@ export default function TestimonialsSection() {
     {
       id: 2,
       company: 'Postman',
-      logo: '/assets/images/postman-logo.svg',
+      logo: '/assets/icons/CompanyLogo/postman_logo.svg',
       text: "Exceptional work! The team delivered beyond our expectations. Our users love the new interface and performance improvements.",
       author: 'Sarah Johnson',
       role: 'Product Manager, Postman',
@@ -29,14 +28,45 @@ export default function TestimonialsSection() {
     },
     {
       id: 3,
-      company: 'Microsoft',
-      logo: '/assets/images/microsoft-logo.svg',
+      company: 'Spotify',
+      logo: '/assets/icons/CompanyLogo/spotify_logo.svg',
       text: "Outstanding collaboration and technical expertise. They transformed our vision into a beautiful, functional reality.",
       author: 'Michael Chen',
       role: 'Engineering Lead, Microsoft',
       rating: 5,
     },
   ]
+
+  const handleSwipe = (event: React.TouchEvent | React.MouseEvent) => {
+    const touch = 'touches' in event ? event.touches[0] : event as React.MouseEvent
+    const startX = touch.clientX
+
+    const handleMove = (e: TouchEvent | MouseEvent) => {
+      const currentTouch = 'touches' in e ? e.touches[0] : e as MouseEvent
+      const diff = startX - currentTouch.clientX
+
+      if (Math.abs(diff) > 50) {
+        if (diff > 0 && activeIndex < testimonials.length - 1) {
+          setActiveIndex(activeIndex + 1)
+        } else if (diff < 0 && activeIndex > 0) {
+          setActiveIndex(activeIndex - 1)
+        }
+        cleanup()
+      }
+    }
+
+    const cleanup = () => {
+      document.removeEventListener('touchmove', handleMove as any)
+      document.removeEventListener('touchend', cleanup)
+      document.removeEventListener('mousemove', handleMove as any)
+      document.removeEventListener('mouseup', cleanup)
+    }
+
+    document.addEventListener('touchmove', handleMove as any)
+    document.addEventListener('touchend', cleanup)
+    document.addEventListener('mousemove', handleMove as any)
+    document.addEventListener('mouseup', cleanup)
+  }
 
   return (
     <section
@@ -56,26 +86,28 @@ export default function TestimonialsSection() {
           Success Stories from Clients
         </motion.h2>
 
-        {/* Testimonial Card */}
+        {/* Testimonial Card - Swipeable */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-card rounded-3xl p-8 md:p-12 shadow-sm border border-border mb-8"
+          className="bg-card rounded-3xl p-6 md:p-12 shadow-sm border border-border mb-8 touch-pan-y cursor-grab active:cursor-grabbing"
+          onTouchStart={handleSwipe}
+          onMouseDown={handleSwipe}
         >
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.3 }}
               className="text-center"
             >
               {/* Company Logo */}
-              <div className="flex items-center justify-center gap-2 mb-6">
-                <div className="w-6 h-6 relative">
+              <div className="flex items-center justify-center mb-6">
+                <div className="relative w-32 h-10">
                   <Image
                     src={testimonials[activeIndex].logo}
                     alt={`${testimonials[activeIndex].company} logo`}
@@ -83,9 +115,6 @@ export default function TestimonialsSection() {
                     className="object-contain"
                   />
                 </div>
-                <span className="text-lg font-semibold text-foreground">
-                  {testimonials[activeIndex].company}
-                </span>
               </div>
 
               {/* Testimonial Text */}
@@ -115,15 +144,15 @@ export default function TestimonialsSection() {
         </motion.div>
 
         {/* Pagination Dots */}
-        <div className="flex gap-2 justify-center">
+        <div className="flex items-center justify-center gap-2">
           {testimonials.map((_, index) => (
             <button
               key={index}
               onClick={() => setActiveIndex(index)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 index === activeIndex
-                  ? 'w-8 bg-primary'
-                  : 'w-2 bg-border hover:bg-muted-foreground'
+                  ? 'w-8 bg-primary-300'
+                  : 'w-2 bg-muted-foreground/30'
               }`}
               aria-label={`Go to testimonial ${index + 1}`}
             />

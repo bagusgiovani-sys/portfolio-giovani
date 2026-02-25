@@ -1,8 +1,8 @@
-// src/components/sections/ContactSection.tsx
 'use client'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Phone, Mail, MapPin, Send, X, Check } from 'lucide-react'
+import { Smartphone, Mail, MapPin, Send, X, Check } from 'lucide-react'
+import Image from 'next/image'
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -15,12 +15,9 @@ export default function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
-    // Simulate API call
     try {
-      // Replace with your actual API call
       await new Promise((resolve, reject) => {
         setTimeout(() => {
-          // Simulate random success/failure for demo
           Math.random() > 0.5 ? resolve(true) : reject(new Error('Failed'))
         }, 1000)
       })
@@ -68,26 +65,21 @@ export default function ContactSection() {
 
           {/* Contact Info */}
           <div className="space-y-4 mb-8">
-            {/* Phone */}
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Phone className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Smartphone className="w-5 h-5 text-primary-300" />
               </div>
               <span className="text-sm text-foreground">+62 1234567890</span>
             </div>
-
-            {/* Email */}
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Mail className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Mail className="w-5 h-5 text-primary-300" />
               </div>
               <span className="text-sm text-foreground">edwinanderson@email.com</span>
             </div>
-
-            {/* Location */}
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <MapPin className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <MapPin className="w-5 h-5 text-primary-300" />
               </div>
               <span className="text-sm text-foreground">Jakarta, Indonesia</span>
             </div>
@@ -98,8 +90,6 @@ export default function ContactSection() {
             <h3 className="text-lg font-semibold text-foreground mb-4">
               Send a Message
             </h3>
-
-            {/* Name Input */}
             <div className="mb-4">
               <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
                 Name
@@ -115,8 +105,6 @@ export default function ContactSection() {
                 placeholder="Your name"
               />
             </div>
-
-            {/* Email Input */}
             <div className="mb-4">
               <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
                 Email
@@ -132,8 +120,6 @@ export default function ContactSection() {
                 placeholder="your.email@example.com"
               />
             </div>
-
-            {/* Message Textarea */}
             <div className="mb-6">
               <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
                 Message
@@ -149,11 +135,9 @@ export default function ContactSection() {
                 placeholder="Your message..."
               />
             </div>
-
-            {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-primary text-white font-semibold py-3.5 px-6 rounded-full hover:bg-primary/90 transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full bg-primary-300 text-white font-semibold py-3.5 px-6 rounded-full hover:bg-primary/90 transition-all duration-300 flex items-center justify-center gap-2"
             >
               <Send className="w-4 h-4" />
               Submit
@@ -161,6 +145,17 @@ export default function ContactSection() {
           </form>
         </motion.div>
 
+        {/* Floor Image */}
+        <div className="mt-1">
+          <Image
+            src="/assets/images/CTA_Floor.svg"
+            alt="Floor"
+            width={1200}
+            height={400}
+            className="w-full mb-[-60px] h-auto rounded-2xl"
+          />
+        </div>
+        
       </div>
 
       {/* Success/Error Modals */}
@@ -172,7 +167,7 @@ export default function ContactSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
               onClick={closeModal}
             >
               {/* Modal */}
@@ -185,76 +180,22 @@ export default function ContactSection() {
                 className="bg-card rounded-3xl p-8 shadow-2xl border border-border max-w-sm w-full relative"
               >
                 {modalState === 'success' ? (
-                  // Success Modal
                   <div className="text-center">
-                    {/* Animated Success Icon */}
+                    {/* Success Image */}
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      transition={{ 
-                        type: 'spring',
-                        delay: 0.2,
-                        duration: 0.6,
-                        bounce: 0.5
-                      }}
+                      transition={{ type: 'spring', delay: 0.2, duration: 0.6, bounce: 0.5 }}
                       className="relative w-32 h-32 mx-auto mb-6"
                     >
-                      {/* Envelope Background */}
-                      <motion.div
-                        initial={{ y: 10, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.3 }}
-                        className="absolute inset-0"
-                      >
-                        <svg viewBox="0 0 120 120" fill="none" className="w-full h-full">
-                          {/* Envelope bottom */}
-                          <motion.path
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ duration: 0.5, delay: 0.4 }}
-                            d="M20 45 L60 70 L100 45 L100 85 C100 88 98 90 95 90 L25 90 C22 90 20 88 20 85 Z"
-                            fill="#E9D5FF"
-                          />
-                          {/* Envelope flap */}
-                          <motion.path
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ duration: 0.5, delay: 0.5 }}
-                            d="M20 45 L60 70 L100 45 L60 30 Z"
-                            fill="#C084FC"
-                          />
-                          {/* Decorative stars */}
-                          <motion.circle
-                            initial={{ scale: 0, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{ delay: 0.7 }}
-                            cx="15" cy="35" r="3" fill="#FBBF24"
-                          />
-                          <motion.circle
-                            initial={{ scale: 0, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{ delay: 0.8 }}
-                            cx="105" cy="35" r="3" fill="#FBBF24"
-                          />
-                        </svg>
-                      </motion.div>
-
-                      {/* Check Icon */}
-                      <motion.div
-                        initial={{ scale: 0, rotate: -180 }}
-                        animate={{ scale: 1, rotate: 0 }}
-                        transition={{ 
-                          type: 'spring',
-                          delay: 0.6,
-                          duration: 0.5,
-                        }}
-                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center shadow-lg"
-                      >
-                        <Check className="w-7 h-7 text-white stroke-[3]" />
-                      </motion.div>
+                      <Image
+                        src="/assets/MessageSuccess.svg"
+                        alt="Success"
+                        fill
+                        className="object-contain"
+                      />
                     </motion.div>
 
-                    {/* Text */}
                     <motion.h3
                       initial={{ y: 10, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
@@ -271,8 +212,6 @@ export default function ContactSection() {
                     >
                       Thank you for reaching out. I'll get back to you as soon as possible.
                     </motion.p>
-
-                    {/* Button */}
                     <motion.button
                       initial={{ y: 10, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
@@ -284,76 +223,22 @@ export default function ContactSection() {
                     </motion.button>
                   </div>
                 ) : (
-                  // Error Modal
                   <div className="text-center">
-                    {/* Animated Error Icon */}
+                    {/* Error Image */}
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      transition={{ 
-                        type: 'spring',
-                        delay: 0.2,
-                        duration: 0.6,
-                        bounce: 0.5
-                      }}
+                      transition={{ type: 'spring', delay: 0.2, duration: 0.6, bounce: 0.5 }}
                       className="relative w-32 h-32 mx-auto mb-6"
                     >
-                      {/* Envelope Background */}
-                      <motion.div
-                        initial={{ y: 10, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.3 }}
-                        className="absolute inset-0"
-                      >
-                        <svg viewBox="0 0 120 120" fill="none" className="w-full h-full">
-                          {/* Envelope bottom */}
-                          <motion.path
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ duration: 0.5, delay: 0.4 }}
-                            d="M20 45 L60 70 L100 45 L100 85 C100 88 98 90 95 90 L25 90 C22 90 20 88 20 85 Z"
-                            fill="#E9D5FF"
-                          />
-                          {/* Envelope flap */}
-                          <motion.path
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ duration: 0.5, delay: 0.5 }}
-                            d="M20 45 L60 70 L100 45 L60 30 Z"
-                            fill="#C084FC"
-                          />
-                          {/* Decorative stars */}
-                          <motion.circle
-                            initial={{ scale: 0, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{ delay: 0.7 }}
-                            cx="15" cy="35" r="3" fill="#EF4444"
-                          />
-                          <motion.circle
-                            initial={{ scale: 0, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{ delay: 0.8 }}
-                            cx="105" cy="35" r="3" fill="#EF4444"
-                          />
-                        </svg>
-                      </motion.div>
-
-                      {/* X Icon */}
-                      <motion.div
-                        initial={{ scale: 0, rotate: 180 }}
-                        animate={{ scale: 1, rotate: 0 }}
-                        transition={{ 
-                          type: 'spring',
-                          delay: 0.6,
-                          duration: 0.5,
-                        }}
-                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-red-500 rounded-full flex items-center justify-center shadow-lg"
-                      >
-                        <X className="w-7 h-7 text-white stroke-[3]" />
-                      </motion.div>
+                      <Image
+                        src="/assets/MessageFail.svg"
+                        alt="Error"
+                        fill
+                        className="object-contain"
+                      />
                     </motion.div>
 
-                    {/* Text */}
                     <motion.h3
                       initial={{ y: 10, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
@@ -370,8 +255,6 @@ export default function ContactSection() {
                     >
                       Please check your internet connection or try refreshing the page.
                     </motion.p>
-
-                    {/* Button */}
                     <motion.button
                       initial={{ y: 10, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}

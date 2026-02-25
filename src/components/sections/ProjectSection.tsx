@@ -12,7 +12,7 @@ export default function WorkSection() {
       title: 'Dashboard SaaS Task Management',
       category: 'Dashboard',
       year: '2024',
-      image: '/assets/images/work-1.jpg',
+      image: '/assets/images/CardBackground/image-1.svg',
       link: 'https://example.com/project-1',
     },
     {
@@ -20,7 +20,7 @@ export default function WorkSection() {
       title: 'E-Commerce Platform',
       category: 'Dashboard',
       year: '2024',
-      image: '/assets/images/work-2.jpg',
+      image: '/assets/images/CardBackground/image-2.svg',
       link: 'https://example.com/project-2',
     },
     {
@@ -28,7 +28,7 @@ export default function WorkSection() {
       title: 'Social Media Dashboard',
       category: 'Dashboard',
       year: '2023',
-      image: '/assets/images/work-3.jpg',
+      image: '/assets/images/CardBackground/image-3.svg',
       link: 'https://example.com/project-3',
     },
     {
@@ -36,7 +36,7 @@ export default function WorkSection() {
       title: 'Analytics Platform',
       category: 'Dashboard',
       year: '2023',
-      image: '/assets/images/work-4.jpg',
+      image: '/assets/images/CardBackground/image-4.svg',
       link: 'https://example.com/project-4',
     },
     {
@@ -44,7 +44,7 @@ export default function WorkSection() {
       title: 'Mobile Banking App',
       category: 'Dashboard',
       year: '2024',
-      image: '/assets/images/work-5.jpg',
+      image: '/assets/images/CardBackground/image-5.svg',
       link: 'https://example.com/project-5',
     },
     {
@@ -52,7 +52,7 @@ export default function WorkSection() {
       title: 'Portfolio Website',
       category: 'Dashboard',
       year: '2023',
-      image: '/assets/images/work-6.jpg',
+      image: '/assets/images/CardBackground/image-6.svg',
       link: 'https://example.com/project-6',
     },
   ]
@@ -121,13 +121,13 @@ function WorkCard({ item, index }: WorkCardProps) {
       </div>
 
       {/* Image */}
-      <div className="relative aspect-[16/10] bg-muted rounded-2xl overflow-hidden mb-6">
+      <div className="relative aspect-[44/44] rounded-4x overflow-hidden mb-6">
         {!imageError ? (
           <Image
             src={item.image}
             alt={item.title}
             fill
-            className="object-contain p-8 transition-transform duration-300 group-hover:scale-105"
+            className="object-cover p-2 transition-transform duration-300 group-hover:scale-105"
             onError={() => setImageError(true)}
           />
         ) : (
@@ -149,7 +149,7 @@ function WorkCard({ item, index }: WorkCardProps) {
         href={item.link}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all duration-300"
+        className="inline-flex items-center gap-2 text-primary-300 font-semibold hover:gap-3 transition-all duration-300"
       >
         Visit Website
         <ArrowRight className="w-4 h-4" />

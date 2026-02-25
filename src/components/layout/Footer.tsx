@@ -1,4 +1,3 @@
-// src/components/layout/Footer.tsx
 'use client'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
@@ -30,7 +29,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         
         {/* Mobile Layout - Stacked */}
-        <div className="flex flex-col items-center gap-6 md:hidden">
+        <div className="flex flex-col items-start gap-6 md:hidden">
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -48,6 +47,10 @@ export default function Footer() {
             />
             <span className="text-white font-semibold text-lg">Your Logo</span>
           </motion.div>
+
+          <div className="text-left text-white/70 text-sm">
+            © {currentYear} Edwin Anderson. All rights reserved.
+          </div>
 
           {/* Social Links */}
           <motion.div
@@ -71,7 +74,7 @@ export default function Footer() {
                   transition={{ duration: 0.3, delay: 0.3 + (index * 0.1) }}
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-colors"
+                  className="w-10 h-10 rounded-full bg-primary-300 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-colors"
                   aria-label={social.name}
                 >
                   <Icon className="w-5 h-5 text-white" />
