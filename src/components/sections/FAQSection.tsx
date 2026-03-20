@@ -1,52 +1,23 @@
 'use client'
+
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Plus, Minus, MessageSquare } from 'lucide-react'
 import Image from 'next/image'
+import { faqData } from '@/lib/data'
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
-
-  const faqs = [
-    {
-      id: 1,
-      question: "What's your approach to front-end development?",
-      answer: "I focus on clean, maintainable code and prioritize user experience. My approach involves close collaboration with designers to ensure exact implementation and seamless interactions across all devices.",
-    },
-    {
-      id: 2,
-      question: "What's your approach to front-end development?",
-      answer: "I focus on clean, maintainable code and prioritize user experience. My approach involves close collaboration with designers to ensure pixel-perfect implementations and create smooth, interactive across all devices.",
-    },
-    {
-      id: 3,
-      question: "What's your approach to front-end development?",
-      answer: "I focus on clean, maintainable code and prioritize user experience. My approach involves close collaboration with designers to ensure pixel-perfect implementations and create smooth, interactive across all devices.",
-    },
-    {
-      id: 4,
-      question: "What's your approach to front-end development?",
-      answer: "I focus on clean, maintainable code and prioritize user experience. My approach involves close collaboration with designers to ensure pixel-perfect implementations and create smooth, interactive across all devices.",
-    },
-    {
-      id: 5,
-      question: "What's your approach to front-end development?",
-      answer: "I focus on clean, maintainable code and prioritize user experience. My approach involves close collaboration with designers to ensure pixel-perfect implementations and create smooth, interactive across all devices.",
-    },
-  ]
+  const { title, items, cta } = faqData
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index)
   }
 
   return (
-    <section
-      id="faq"
-      className="bg-background py-16 px-4 md:px-8 overflow-hidden"
-    >
+    <section id="faq" className="bg-background py-16 px-4 md:px-8 overflow-hidden">
       <div className="max-w-md mx-auto w-full lg:max-w-5xl">
 
-        {/* Card Container */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -54,24 +25,17 @@ export default function FAQSection() {
           transition={{ duration: 0.5 }}
           className="bg-card rounded-3xl p-6 shadow-sm border border-border"
         >
-          {/* Mobile: stacked, Desktop: two columns */}
           <div className="flex flex-col lg:flex-row lg:gap-8">
 
-            {/* Left Column */}
+            {/* Left */}
             <div className="lg:w-64 lg:shrink-0 flex flex-col justify-between">
               <div>
-                {/* Icon */}
                 <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                   <MessageSquare className="w-5 h-5 text-primary-300" />
                 </div>
-
-                {/* Title */}
-                <h2 className="text-2xl font-bold text-foreground mb-6">
-                  Have Questions?
-                </h2>
+                <h2 className="text-2xl font-bold text-foreground mb-6">{title}</h2>
               </div>
 
-              {/* Avatar + CTA nested card */}
               <div className="mt-6 lg:mt-0 bg-white rounded-2xl p-4 border-2 border-border">
                 <div className="w-12 h-12 rounded-full bg-secondary-300 mb-4 overflow-hidden">
                   <Image
@@ -86,15 +50,15 @@ export default function FAQSection() {
                   Have more questions? Send me a message
                 </p>
                 <button className="w-full bg-primary-300 text-white font-thin py-3 px-6 rounded-full hover:bg-primary/90 transition-colors duration-300">
-                  Get in touch
+                  {cta}
                 </button>
               </div>
             </div>
 
-            {/* Right Column - FAQ Accordion */}
+            {/* Right — Accordion */}
             <div className="flex-1 mt-6 lg:mt-0">
               <div className="space-y-3">
-                {faqs.map((faq, index) => (
+                {items.map((faq, index) => (
                   <div
                     key={faq.id}
                     className="border-b border-border last:border-0 pb-3 last:pb-0"
@@ -108,11 +72,10 @@ export default function FAQSection() {
                       }`}>
                         {faq.question}
                       </span>
-                      {openIndex === index ? (
-                        <Minus className="w-5 h-5 flex-shrink-0 text-primary-300" />
-                      ) : (
-                        <Plus className="w-5 h-5 flex-shrink-0 text-muted-foreground" />
-                      )}
+                      {openIndex === index
+                        ? <Minus className="w-5 h-5 flex-shrink-0 text-primary-300" />
+                        : <Plus className="w-5 h-5 flex-shrink-0 text-muted-foreground" />
+                      }
                     </button>
 
                     <AnimatePresence>

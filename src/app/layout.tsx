@@ -12,9 +12,9 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'Edwin Anderson — Frontend Developer',
+  title: 'Bagus Giovani — Frontend Developer',
   description:
-    'Portfolio of Edwin Anderson, a Frontend Developer specializing in React, TypeScript, and Next.js.',
+    'Portfolio of Bagus Giovani, a Frontend Developer specializing in React, TypeScript, and Next.js.',
 }
 
 export default function RootLayout({

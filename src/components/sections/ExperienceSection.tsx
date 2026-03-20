@@ -1,44 +1,16 @@
-// src/components/sections/ExperienceSection.tsx
 'use client'
+
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { experienceData } from '@/lib/data'
 
 export default function ExperienceSection() {
-  const experiences = [
-    {
-      id: 1,
-      company: 'Trustpilot',
-      logo: '/assets/icons/CompanyLogo/trustpilot_logo.svg',
-      period: '2021-2024',
-      role: 'Frontend Developer',
-      description: 'Built responsive web interfaces using modern frameworks like React.js, ensuring seamless integration with backend systems. Optimized performance, implemented accessible designs, and delivered clean, reusable code to enhance user experience and scalability.',
-    },
-    {
-      id: 2,
-      company: 'Postman',
-      logo: '/assets/icons/CompanyLogo/postman_logo.svg',
-      period: '2021-2024',
-      role: 'Frontend Developer',
-      description: 'Built responsive web interfaces using modern frameworks like React.js, ensuring seamless integration with backend systems. Optimized performance, implemented accessible designs, and delivered clean, reusable code to enhance user experience and scalability.',
-    },
-    {
-      id: 3,
-      company: 'Spotify',
-      logo: '/assets/icons/CompanyLogo/spotify_logo.svg',
-      period: '2019-2021',
-      role: 'Frontend Developer',
-      description: 'Built responsive web interfaces using modern frameworks like React.js, ensuring seamless integration with backend systems. Optimized performance, implemented accessible designs, and delivered clean, reusable code to enhance user experience and scalability.',
-    },
-  ]
+  const { title, items } = experienceData
 
   return (
-    <section
-      id="experience"
-      className="bg-background py-16 px-4 md:px-8 overflow-hidden"
-    >
+    <section id="experience" className="bg-background py-16 px-4 md:px-8 overflow-hidden">
       <div className="max-w-3xl mx-auto w-full">
 
-        {/* Title */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -46,17 +18,14 @@ export default function ExperienceSection() {
           transition={{ duration: 0.5 }}
           className="text-3xl md:text-4xl font-bold text-center text-foreground mb-12"
         >
-          My Work Experience
+          {title}
         </motion.h2>
 
-        {/* Timeline */}
         <div className="relative">
-          {/* Vertical Line */}
           <div className="absolute left-[11px] top-15 bottom-0 border-l-2 border-dashed border-gray-800/50" />
 
-          {/* Experience Items */}
           <div className="space-y-12">
-            {experiences.map((exp, index) => (
+            {items.map((exp, index) => (
               <motion.div
                 key={exp.id}
                 initial={{ opacity: 0, x: -20 }}
@@ -65,14 +34,10 @@ export default function ExperienceSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="relative pl-12"
               >
-                {/* Dot + Logo aligned horizontally */}
                 <div className="flex items-center gap-4">
-                  {/* Purple Dot */}
                   <div className="absolute left-0 w-6 h-6 rounded-full border-2 border-dashed border-gray-600/50 flex items-center justify-center shrink-0">
                     <div className="w-4 h-4 rounded-full bg-primary-300" />
                   </div>
-
-                  {/* Company Logo */}
                   <div className="w-32 h-32 relative">
                     <Image
                       src={exp.logo}
@@ -83,25 +48,12 @@ export default function ExperienceSection() {
                   </div>
                 </div>
 
-                {/* Company Name (large) */}
                 <h3 className="text-xl font-semibold text-foreground mt-[-30px] mb-1">
                   {exp.company}
                 </h3>
-
-                {/* Period */}
-                <p className="text-sm text-muted-foreground mb-3">
-                  {exp.period}
-                </p>
-
-                {/* Role */}
-                <h4 className="text-lg font-bold text-foreground mb-3">
-                  {exp.role}
-                </h4>
-
-                {/* Description */}
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {exp.description}
-                </p>
+                <p className="text-sm text-muted-foreground mb-3">{exp.period}</p>
+                <h4 className="text-lg font-bold text-foreground mb-3">{exp.role}</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
               </motion.div>
             ))}
           </div>

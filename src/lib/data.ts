@@ -7,7 +7,7 @@
 // ─── Hero ────────────────────────────────────────────────────
 
 export const heroData = {
-  name: 'EDWIN\nANDERSON',
+  name: 'Bagus Giovani',
   rating: {
     score: '5.0',
     label: 'Many Client Trust',
@@ -17,9 +17,9 @@ export const heroData = {
     clients: '50+',
     clientsLabel: 'Global Clients',
   },
-  badges: ['Frontend Developer', 'React Expert',],
+  badges: ['Frontend Developer', 'React Expert'],
   bio: {
-    greeting: "Hi, I'm Edwin Anderson 👋",
+    greeting: "Hi, I'm Bagus Giovani 👋",
     highlight:
       'Building digital products with a focus on crafting visually engaging and seamless user interfaces using React.js.',
     body: 'Prioritizing responsive design, performance optimization, and user-centric features to deliver exceptional web experiences.',
@@ -31,13 +31,57 @@ export const heroData = {
     'TypeScript Pro',
     'UI/UX Focused',
   ],
-  // Swap these with real client image paths when available e.g. '/images/clients/robert.jpg'
   clientAvatars: [
-    { src: '/assets/images/ClientPics/Male Avatar 01.svg'},
-    { src: '/assets/images/ClientPics/Female Avatar 06.svg'},
-    { src: '/assets/images/ClientPics/Male Avatar 10.svg'},
-    { src: '/assets/images/ClientPics/Female Avatar 07.svg'},
+    { src: '/assets/images/ClientPics/Male Avatar 01.svg' },
+    { src: '/assets/images/ClientPics/Female Avatar 06.svg' },
+    { src: '/assets/images/ClientPics/Male Avatar 10.svg' },
+    { src: '/assets/images/ClientPics/Female Avatar 07.svg' },
   ],
+}
+
+// ─── About ───────────────────────────────────────────────────
+
+export interface StatItem {
+  value: string
+  label: string
+  flag: string
+}
+
+export const aboutData = {
+  bio: {
+    greeting: "Hi, I'm Bagus Giovani 👋",
+    highlight:
+      'Building digital products with a focus on crafting visually engaging and seamless user interfaces using React.js.',
+    body: 'Prioritizing responsive design, performance optimization, and user-centric features to deliver exceptional web experiences.',
+  },
+  techIcons: [
+    { name: 'CSS3', icon: '/assets/icons/css_logo.svg' },
+    { name: 'JavaScript', icon: '/assets/icons/js_logo.svg' },
+    { name: 'HTML5', icon: '/assets/icons/html_logo.svg' },
+    { name: 'Express.js', icon: '/assets/icons/express_logo.svg' },
+    { name: 'Webpack.js', icon: '/assets/icons/webpack_logo.svg' },
+    { name: 'TypeScript', icon: '/assets/icons/ts_logo.svg' },
+    { name: 'React', icon: '/assets/icons/React_logo.svg' },
+    { name: 'Docker', icon: '/assets/icons/docker_logo.svg' },
+    { name: 'PostgreSQL', icon: '/assets/icons/postgreSQL_logo.svg' },
+    { name: 'MongoDB', icon: '/assets/icons/mongo_logo.svg' },
+  ],
+  whyChooseMeBadges: {
+    row1: ['Frontend Expert', 'Fullstack Developer', 'Responsive Design'],
+    row2: ['React Expert', '5 Years Experience', 'React Native'],
+    row3: ['Clean Code', 'Performance Optimization', 'UI/UX Design'],
+  },
+  projectPreviews: [
+    { id: 1, image: '/assets/images/CardBackground/image-8.svg' },
+    { id: 2, image: '/assets/images/CardBackground/image-7.svg' },
+    { id: 3, image: '/assets/images/CardBackground/image-2.svg' },
+  ],
+  stats: [
+    { value: '50+', label: "Global Client's Handle", flag: '🇩🇪' },
+    { value: '99%', label: 'Client Satisfaction Rate', flag: '🇺🇸' },
+    { value: '100+', label: 'Project Delivered', flag: '🇮🇩' },
+  ] satisfies StatItem[],
+  hireCta: 'Hire Me',
 }
 
 // ─── Why Choose Me ───────────────────────────────────────────
@@ -45,103 +89,167 @@ export const heroData = {
 export const whyMeData = {
   title: 'Why Choose Me',
   subtitle: 'Delivering excellence with innovative solutions and seamless execution.',
-  tags: [
-    'Fullstack Developer',
-    'Responsive Design',
-    'React Expert',
-    '5 Years Experience',
-    'Clean Code',
-    'Performance Optimization',
-  ],
   comparison: [
-    { skill: 'React Expert',               me: true, others: false },
-    { skill: 'Perfect Pixel',              me: true, others: false },
-    { skill: 'TypeScript Proficiency',     me: true, others: false },
-    { skill: 'Clean, Maintainable Code',   me: true, others: false },
-    { skill: 'Performance Optimization',   me: true, others: false },
-    { skill: 'Responsive Website',         me: true, others: false },
+    { skill: 'React Expert', me: true, others: false },
+    { skill: 'Perfect Pixel', me: true, others: false },
+    { skill: 'TypeScript Proficiency', me: true, others: false },
+    { skill: 'Clean, Maintainable Code', me: true, others: false },
+    { skill: 'Performance Optimization', me: true, others: false },
+    { skill: 'Responsive Website', me: true, others: false },
     { skill: 'UI Design Proficiency (Figma)', me: true, others: false },
   ],
 }
 
 // ─── Skills ──────────────────────────────────────────────────
 
-export const skillsData = {
-  title: 'Expert Skill',
-  subtitle: 'Mastering modern technologies to deliver impactful and efficient solutions',
-  experience: '5+',
-  experienceLabel: 'Years Experience',
-  // icon: path to icon image or icon component name
-  techIcons: [
-    { name: 'CSS3',       icon: '/icons/css3.svg' },
-    { name: 'JavaScript', icon: '/icons/js.svg' },
-    { name: 'HTML5',      icon: '/icons/html5.svg' },
-    { name: 'Node.js',    icon: '/icons/nodejs.svg' },
-    { name: 'NestJS',     icon: '/icons/nestjs.svg' },
-    { name: 'TypeScript', icon: '/icons/typescript.svg' },
-    { name: 'React',      icon: '/icons/react.svg' },
-    { name: 'Docker',     icon: '/icons/docker.svg' },
-    { name: 'PostgreSQL', icon: '/icons/postgresql.svg' },
-    { name: 'MongoDB',    icon: '/icons/mongodb.svg' },
-  ],
-  professionalSkills: [
-    {
-      name: 'HTML',
-      icon: '/icons/html5.svg',
-      description: 'Building the structure of web pages with semantic markup for accessibility.',
-      level: 90,
-    },
-    {
-      name: 'CSS',
-      icon: '/icons/css3.svg',
-      description: 'Building the structure of web pages with semantic markup for accessibility.',
-      level: 90,
-    },
-    {
-      name: 'Javascript',
-      icon: '/icons/js.svg',
-      description: 'Building the structure of web pages with semantic markup for accessibility.',
-      level: 90,
-    },
-  ],
+export interface Skill {
+  name: string
+  icon: string
+  description: string
+  level: number
 }
 
-// ─── About (Stats) ───────────────────────────────────────────
-
-export const aboutData = {
-  stats: [
-    { value: '50+', label: "Global Client's Handle",  flag: '🇩🇪' },
-    { value: '99%', label: 'Client Satisfaction Rate', flag: '🇺🇸' },
-    { value: '100+', label: 'Project Delivered',       flag: '🇮🇩' },
-  ],
-  hireCta: 'Hire Me',
+export const skillsData = {
+  title: 'My Professional Skill',
+  pages: [
+    [
+      {
+        name: 'HTML5',
+        icon: '/assets/icons/html_logo.svg',
+        description: 'Building the structure of web pages with semantic markup for accessibility.',
+        level: 90,
+      },
+      {
+        name: 'CSS3',
+        icon: '/assets/icons/css_logo.svg',
+        description: 'Styling modern web interfaces with responsive and performant CSS.',
+        level: 90,
+      },
+      {
+        name: 'JavaScript',
+        icon: '/assets/icons/js_logo.svg',
+        description: 'Creating interactive and dynamic web applications with vanilla JavaScript.',
+        level: 90,
+      },
+    ],
+    [
+      {
+        name: 'React',
+        icon: '/assets/icons/React_logo.svg',
+        description: 'Building modern web applications with component-based architecture.',
+        level: 95,
+      },
+      {
+        name: 'TypeScript',
+        icon: '/assets/icons/ts_logo.svg',
+        description: 'Writing type-safe JavaScript code for better maintainability.',
+        level: 85,
+      },
+      {
+        name: 'Express.js',
+        icon: '/assets/icons/express_logo.svg',
+        description: 'Building robust backend APIs and server-side applications.',
+        level: 88,
+      },
+    ],
+    [
+      {
+        name: 'Docker',
+        icon: '/assets/icons/docker_logo.svg',
+        description: 'Containerizing applications for consistent deployment across environments.',
+        level: 80,
+      },
+      {
+        name: 'MongoDB',
+        icon: '/assets/icons/mongo_logo.svg',
+        description: 'Working with NoSQL databases for flexible data storage.',
+        level: 85,
+      },
+      {
+        name: 'PostgreSQL',
+        icon: '/assets/icons/postgreSQL_logo.svg',
+        description: 'Managing relational databases with complex queries and optimization.',
+        level: 82,
+      },
+    ],
+  ] satisfies Skill[][],
 }
 
 // ─── Projects ────────────────────────────────────────────────
+
+export interface Project {
+  id: number
+  title: string
+  category: string
+  year: string
+  image: string
+  link: string
+}
 
 export const projectsData = {
   title: 'My Latest Work',
   items: [
     {
       id: 1,
+      title: 'Dashboard SaaS Task Management',
       category: 'Dashboard',
       year: '2024',
-      title: 'Dashboard SaaS Task Management',
-      image: '/images/projects/project-1.jpg',
-      url: '#',
+      image: '/assets/images/CardBackground/image-1.svg',
+      link: 'https://example.com/project-1',
     },
     {
       id: 2,
+      title: 'E-Commerce Platform',
       category: 'Dashboard',
       year: '2024',
-      title: 'Dashboard SaaS Task Management',
-      image: '/images/projects/project-2.jpg',
-      url: '#',
+      image: '/assets/images/CardBackground/image-2.svg',
+      link: 'https://example.com/project-2',
     },
-  ],
+    {
+      id: 3,
+      title: 'Social Media Dashboard',
+      category: 'Dashboard',
+      year: '2023',
+      image: '/assets/images/CardBackground/image-3.svg',
+      link: 'https://example.com/project-3',
+    },
+    {
+      id: 4,
+      title: 'Analytics Platform',
+      category: 'Dashboard',
+      year: '2023',
+      image: '/assets/images/CardBackground/image-4.svg',
+      link: 'https://example.com/project-4',
+    },
+    {
+      id: 5,
+      title: 'Mobile Banking App',
+      category: 'Dashboard',
+      year: '2024',
+      image: '/assets/images/CardBackground/image-5.svg',
+      link: 'https://example.com/project-5',
+    },
+    {
+      id: 6,
+      title: 'Portfolio Website',
+      category: 'Dashboard',
+      year: '2023',
+      image: '/assets/images/CardBackground/image-6.svg',
+      link: 'https://example.com/project-6',
+    },
+  ] satisfies Project[],
 }
 
 // ─── Experience ──────────────────────────────────────────────
+
+export interface Experience {
+  id: number
+  company: string
+  logo: string
+  role: string
+  period: string
+  description: string
+}
 
 export const experienceData = {
   title: 'My Work Experience',
@@ -149,7 +257,7 @@ export const experienceData = {
     {
       id: 1,
       company: 'Trustpilot',
-      logo: '/icons/trustpilot.svg',
+      logo: '/assets/icons/CompanyLogo/trustpilot_logo.svg',
       role: 'Frontend Developer',
       period: '2021–2024',
       description:
@@ -158,7 +266,7 @@ export const experienceData = {
     {
       id: 2,
       company: 'Postman',
-      logo: '/icons/postman.svg',
+      logo: '/assets/icons/CompanyLogo/postman_logo.svg',
       role: 'Frontend Developer',
       period: '2021–2024',
       description:
@@ -167,34 +275,67 @@ export const experienceData = {
     {
       id: 3,
       company: 'Spotify',
-      logo: '/icons/spotify.svg',
+      logo: '/assets/icons/CompanyLogo/spotify_logo.svg',
       role: 'Frontend Developer',
-      period: '2021–2024',
+      period: '2019–2021',
       description:
         'Built responsive web interfaces using modern frameworks like React.js, ensuring seamless integration with backend systems. Optimized performance, implemented accessible designs, and delivered clean, reusable code to enhance user experience and scalability.',
     },
-  ],
+  ] satisfies Experience[],
 }
 
 // ─── Testimonials ────────────────────────────────────────────
+
+export interface Testimonial {
+  id: number
+  company: string
+  logo: string
+  text: string
+  author: string
+  role: string
+  rating: number
+}
 
 export const testimonialsData = {
   title: 'Success Stories from Clients',
   items: [
     {
       id: 1,
-      source: 'Trustpilot',
-      quote:
-        "Thanks to their expertise, our website is now faster, more responsive, and visually stunning. We've seen a significant increase in user engagement!",
-      rating: 5,
-      name: 'Robert Lewandowski',
+      company: 'Trustpilot',
+      logo: '/assets/icons/CompanyLogo/trustpilot_logo.svg',
+      text: "Thanks to their expertise, our website is now faster, more responsive, and visually stunning. We've seen a significant increase in user engagement!",
+      author: 'Robert Lewandowski',
       role: 'Head of Engineering, Upwork',
-      avatar: '/images/testimonials/robert.jpg',
+      rating: 5,
     },
-  ],
+    {
+      id: 2,
+      company: 'Postman',
+      logo: '/assets/icons/CompanyLogo/postman_logo.svg',
+      text: 'Exceptional work! The team delivered beyond our expectations. Our users love the new interface and performance improvements.',
+      author: 'Sarah Johnson',
+      role: 'Product Manager, Postman',
+      rating: 5,
+    },
+    {
+      id: 3,
+      company: 'Spotify',
+      logo: '/assets/icons/CompanyLogo/spotify_logo.svg',
+      text: 'Outstanding collaboration and technical expertise. They transformed our vision into a beautiful, functional reality.',
+      author: 'Michael Chen',
+      role: 'Engineering Lead, Microsoft',
+      rating: 5,
+    },
+  ] satisfies Testimonial[],
 }
 
 // ─── FAQ ─────────────────────────────────────────────────────
+
+export interface FaqItem {
+  id: string
+  question: string
+  answer: string
+}
 
 export const faqData = {
   title: 'Have Questions?',
@@ -229,7 +370,7 @@ export const faqData = {
       answer:
         'It depends on scope. A landing page typically takes 1–2 weeks, while a full web app can take 1–3 months. I provide detailed timelines after the initial brief.',
     },
-  ],
+  ] satisfies FaqItem[],
   cta: 'Get in touch',
 }
 
@@ -250,18 +391,23 @@ export const contactData = {
 
 // ─── Navbar ──────────────────────────────────────────────────
 
-export const navLinks = [
-  { label: 'Home',       href: '#home' },
-  { label: 'About',      href: '#about' },
-  { label: 'Skills',     href: '#skills' },
-  { label: 'Projects',   href: '#projects' },
+export interface NavLink {
+  label: string
+  href: string
+}
+
+export const navLinks: NavLink[] = [
+  { label: 'Home', href: '#home' },
+  { label: 'About', href: '#about' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Contact',    href: '#contact' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 // ─── Footer ──────────────────────────────────────────────────
 
 export const footerData = {
   logo: 'Your Logo',
-  copyright: '© 2025 Edwin Anderson. All rights reserved.',
+  copyright: '© 2025 Bagus Giovani. All rights reserved.',
 }

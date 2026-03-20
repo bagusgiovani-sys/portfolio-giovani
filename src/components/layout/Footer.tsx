@@ -7,19 +7,19 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   const socialLinks = [
-    { 
-      name: 'Website', 
-      icon: Globe, 
+    {
+      name: 'Website',
+      icon: Globe,
       href: 'https://yourwebsite.com',
     },
-    { 
-      name: 'Instagram', 
-      icon: Instagram, 
+    {
+      name: 'Instagram',
+      icon: Instagram,
       href: 'https://instagram.com/yourusername',
     },
-    { 
-      name: 'LinkedIn', 
-      icon: Linkedin, 
+    {
+      name: 'LinkedIn',
+      icon: Linkedin,
       href: 'https://linkedin.com/in/yourusername',
     },
   ]
@@ -27,7 +27,7 @@ export default function Footer() {
   return (
     <footer className="bg-primary-400 py-8 md:py-6 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
-        
+
         {/* Mobile Layout - Stacked */}
         <div className="flex flex-col items-start gap-6 md:hidden">
           {/* Logo */}
@@ -49,7 +49,7 @@ export default function Footer() {
           </motion.div>
 
           <div className="text-left text-white/70 text-sm">
-            © {currentYear} Edwin Anderson. All rights reserved.
+            © {currentYear} Bagus Giovani. All rights reserved.
           </div>
 
           {/* Social Links */}
@@ -108,7 +108,7 @@ export default function Footer() {
 
             {/* Copyright */}
             <span className="text-white/70 text-sm ml-4">
-              © {currentYear} Edwin Anderson. All rights reserved.
+              © {currentYear} Bagus Giovani. All rights reserved.
             </span>
           </motion.div>
 
