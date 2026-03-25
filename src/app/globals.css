@@ -15,6 +15,11 @@
   --color-border: #e4e7ec;
   --color-input: #ffffff;
 
+  --color-brand-one: #714732;
+  --color-brand-two: #84563d;
+  --color-brand-three: #e2ce9b;
+  --color-brand-four: #fefccf;
+
   --color-neutral-25: #fcfcfd;
   --color-neutral-50: #f9fafb;
   --color-neutral-100: #f2f4f7;
@@ -67,8 +72,8 @@
 
 @media (prefers-color-scheme: dark) {
   @theme {
-    --color-background: #0c111d;
-    --color-foreground: #f9fafb;
+    --color-background: #fefccf;
+    --color-foreground: #fefccf;
     --color-card: #1d2939;
     --color-card-foreground: #f2f4f7;
     --color-muted: #344054;
@@ -159,7 +164,7 @@ html {
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: oklch(88.916% 0.08049 87.644);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
@@ -239,16 +244,21 @@ html {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
-.animate-ticker {
-  animation: ticker 30s linear infinite;
+.animate-ticker-mobile {
+  animation: ticker 12s linear infinite;
 }
+
+.animate-ticker-pc {
+  animation: ticker 15s linear infinite;
+}
+
 
 @keyframes ticker-reverse {
   from { transform: translateX(-50%); }
   to { transform: translateX(0); }
 }
 .animate-ticker-reverse {
-  animation: ticker-reverse 30s linear infinite;
+  animation: ticker-reverse 12s linear infinite;
 }
 
 html {

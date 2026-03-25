@@ -43,97 +43,133 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="bg-background py-16 px-4 md:px-8 overflow-hidden">
-      <div className="max-w-md mx-auto w-full">
+      <div className="max-w-6xl mx-auto w-full">
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="bg-card rounded-3xl p-8 shadow-sm border border-border"
-        >
-          <h2 className="text-3xl font-bold text-foreground mb-2">{title}</h2>
-          <p className="text-sm text-muted-foreground mb-8">{subtitle}</p>
+        {/* Desktop: two columns | Mobile: single column card */}
+        <div className="flex flex-col lg:flex-row lg:items-start lg:gap-16">
 
-          {/* Contact Info */}
-          <div className="space-y-4 mb-8">
-            {[
-              { icon: Smartphone, text: phone },
-              { icon: Mail, text: email },
-              { icon: MapPin, text: location },
-            ].map(({ icon: Icon, text }) => (
-              <div key={text} className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Icon className="w-5 h-5 text-primary-300" />
+          {/* Left — Info (desktop only shows this outside card) */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="hidden lg:flex flex-col justify-center flex-1 pt-8"
+          >
+            <h2 className="text-4xl xl:text-5xl font-bold text-foreground mb-4 leading-tight">
+              {title}
+            </h2>
+            <p className="text-sm text-muted-foreground mb-10">{subtitle}</p>
+
+            <div className="space-y-5">
+              {[
+                { icon: Smartphone, text: phone },
+                { icon: Mail, text: email },
+                { icon: MapPin, text: location },
+              ].map(({ icon: Icon, text }) => (
+                <div key={text} className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Icon className="w-5 h-5 text-primary-300" />
+                  </div>
+                  <span className="text-sm text-foreground">{text}</span>
                 </div>
-                <span className="text-sm text-foreground">{text}</span>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Right — Card with form (on mobile: full card including info) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="w-full lg:w-[480px] xl:w-[520px] bg-card rounded-3xl p-8 shadow-sm border border-border flex-shrink-0"
+          >
+            {/* Mobile only — title + contact info inside card */}
+            <div className="lg:hidden mb-8">
+              <h2 className="text-3xl font-bold text-foreground mb-2">{title}</h2>
+              <p className="text-sm text-muted-foreground mb-6">{subtitle}</p>
+              <div className="space-y-4">
+                {[
+                  { icon: Smartphone, text: phone },
+                  { icon: Mail, text: email },
+                  { icon: MapPin, text: location },
+                ].map(({ icon: Icon, text }) => (
+                  <div key={text} className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-5 h-5 text-primary-300" />
+                    </div>
+                    <span className="text-sm text-foreground">{text}</span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-
-          {/* Form */}
-          <form onSubmit={handleSubmit}>
-            <h3 className="text-lg font-semibold text-foreground mb-4">Send a Message</h3>
-
-            <div className="mb-4">
-              <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 bg-background border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                placeholder="Your name"
-              />
             </div>
 
-            <div className="mb-4">
-              <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 bg-background border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                placeholder="your.email@example.com"
-              />
-            </div>
+            {/* Form */}
+            <form onSubmit={handleSubmit}>
+              <h3 className="text-lg font-semibold text-foreground mb-4">Send a Message</h3>
 
-            <div className="mb-6">
-              <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows={4}
-                className="w-full px-4 py-3 bg-background border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
-                placeholder="Your message..."
-              />
-            </div>
+              <div className="mb-4">
+                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 bg-background border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                  placeholder="Your name"
+                />
+              </div>
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-primary-300 text-white font-semibold py-3.5 px-6 rounded-full hover:bg-primary/90 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
-            >
-              <Send className="w-4 h-4" />
-              {isSubmitting ? 'Sending...' : 'Submit'}
-            </button>
-          </form>
-        </motion.div>
+              <div className="mb-4">
+                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 bg-background border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                  placeholder="your.email@example.com"
+                />
+              </div>
 
+              <div className="mb-6">
+                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={4}
+                  className="w-full px-4 py-3 bg-background border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
+                  placeholder="Your message..."
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-primary-300 text-white font-semibold py-3.5 px-6 rounded-full hover:bg-primary/90 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                <Send className="w-4 h-4" />
+                {isSubmitting ? 'Sending...' : 'Submit'}
+              </button>
+            </form>
+          </motion.div>
+        </div>
+
+        {/* Floor image */}
         <div className="mt-1">
           <Image
             src="/assets/images/CTA_Floor.svg"

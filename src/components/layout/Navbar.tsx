@@ -34,7 +34,7 @@ export default function Navbar() {
 
   // Background color class - used for both navbar and drawer
   const bgClass = scrolled 
-    ? 'bg-primary-400' // Dark purple when scrolled (#180131)
+    ? 'bg-stone-900/90 backdrop-blur-md'
     : 'bg-transparent'
 
   return (

@@ -9,7 +9,7 @@ export default function ExperienceSection() {
 
   return (
     <section id="experience" className="bg-background py-16 px-4 md:px-8 overflow-hidden">
-      <div className="max-w-3xl mx-auto w-full">
+      <div className="max-w-4xl mx-auto w-full">
 
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -21,42 +21,49 @@ export default function ExperienceSection() {
           {title}
         </motion.h2>
 
-        <div className="relative">
-          <div className="absolute left-[11px] top-15 bottom-0 border-l-2 border-dashed border-gray-800/50" />
+        <div className="space-y-12">
+          {items.map((exp, index) => (
+            <motion.div
+              key={exp.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="flex flex-col lg:flex-row lg:gap-12"
+            >
+              {/* Left — Logo + Company + Period */}
+              <div className="flex flex-col lg:w-48 lg:shrink-0 mb-4 lg:mb-0">
+                <div className="w-32 h-16 relative mb-2">
+                  <Image
+                    src={exp.logo}
+                    alt={`${exp.company} logo`}
+                    fill
+                    className="object-contain object-left"
+                  />
+                </div>
+                <h3 className="text-base font-semibold text-foreground">{exp.company}</h3>
+                <p className="text-sm text-muted-foreground">{exp.period}</p>
+              </div>
 
-          <div className="space-y-12">
-            {items.map((exp, index) => (
-              <motion.div
-                key={exp.id}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative pl-12"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="absolute left-0 w-6 h-6 rounded-full border-2 border-dashed border-gray-600/50 flex items-center justify-center shrink-0">
-                    <div className="w-4 h-4 rounded-full bg-primary-300" />
+              {/* Right — Timeline dot + Role + Description */}
+              <div className="relative flex gap-6 flex-1">
+                {/* Vertical dashed line + dot */}
+                <div className="flex flex-col items-center">
+                  <div className="w-6 h-6 rounded-full border-2 border-dashed border-gray-400/50 flex items-center justify-center shrink-0 mt-1">
+                    <div className="w-3.5 h-3.5 rounded-full bg-primary-300" />
                   </div>
-                  <div className="w-32 h-32 relative">
-                    <Image
-                      src={exp.logo}
-                      alt={`${exp.company} logo`}
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
+                  {index < items.length - 1 && (
+                    <div className="flex-1 w-px border-l-2 border-dashed border-gray-300/50 mt-2" />
+                  )}
                 </div>
 
-                <h3 className="text-xl font-semibold text-foreground mt-[-30px] mb-1">
-                  {exp.company}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-3">{exp.period}</p>
-                <h4 className="text-lg font-bold text-foreground mb-3">{exp.role}</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
-              </motion.div>
-            ))}
-          </div>
+                <div className="pb-4">
+                  <h4 className="text-base font-bold text-foreground mb-2">{exp.role}</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
       </div>
