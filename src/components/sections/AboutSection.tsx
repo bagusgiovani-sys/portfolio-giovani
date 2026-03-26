@@ -9,12 +9,13 @@ import { aboutData } from '@/lib/data'
 const LENS_SIZE = 150
 const ZOOM = 2.5
 
-// All pin data in one place so we render them both in base layer and inside lens
 const PINS = [
   { name: 'Singapore', src: '/assets/images/singapore.png', pos: 'top-[48%] right-[22%]', delay: 0 },
-  { name: 'India',     src: '/assets/images/india.png',     pos: 'top-[38%] right-[30%]', delay: 0.7 },
+  { name: 'India',     src: '/assets/images/india.png',     pos: 'top-[45%] right-[41%]', delay: 0.7 },
   { name: 'Taiwan',    src: '/assets/images/taiwan.png',    pos: 'top-[38%] right-[13%]', delay: 1.4 },
   { name: 'Vietnam',   src: '/assets/images/vietnam.png',   pos: 'bottom-[68%] right-[16%]', delay: 1.4 },
+  { name: 'United Arab Emirates',    src: '/assets/images/UAE.svg',    pos: 'top-[40%] right-[50%]', delay: 1.4 },
+  { name: 'Brazil',   src: '/assets/images/Brazil.svg',   pos: 'bottom-[45%] left-[19%]', delay: 1.4 },
 ]
 
 function MapPin({ name, src, pos, pulse }: { name: string; src: string; pos: string; pulse?: boolean }) {
@@ -34,6 +35,36 @@ function MapPin({ name, src, pos, pulse }: { name: string; src: string; pos: str
         <Image src={src} alt={name} width={40} height={20} className="drop-shadow-lg w-2/5 h-auto" />
       </div>
     </div>
+  )
+}
+
+// Extracted card scene — rendered both normally and inside the lens clone
+function MapCardScene({ stats, pulse }: { stats: typeof aboutData.stats; pulse: boolean }) {
+  return (
+    <>
+      {/* Map */}
+      <div className="absolute inset-[-80] pointer-events-none">
+        <Image src="/assets/images/worldmap1.jpg" alt="World Map" fill className="object-contain" />
+      </div>
+
+      {/* Pins */}
+      {PINS.map((pin) => <MapPin key={pin.name} {...pin} pulse={pulse} />)}
+
+      {/* Title + Stats */}
+      <div className="relative z-10 p-6 md:p-8">
+        <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
+          Building Digital Products
+        </h3>
+        <div className="space-y-6 mt-18 md:mt-65">
+          {stats.map((stat) => (
+            <div key={stat.label}>
+              <p className="text-4xl md:text-6xl font-bold text-gray-800 mb-1">{stat.value}</p>
+              <p className="text-gray-800/80 mb-5 text-sm">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
   )
 }
 
@@ -205,45 +236,40 @@ export default function AboutSection() {
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
-            className="relative bg-gradient-to-br from-brand-three to-brand-four rounded-3xl p-6 md:p-8 overflow-hidden h-[500px] md:h-[550px]"
+            className="relative bg-gradient-to-br from-brand-three to-brand-four rounded-3xl overflow-hidden h-[500px] md:h-[550px]"
             style={{ cursor: 'none' }}
           >
-            {/* Base layer — map + animated pins */}
-            <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute inset-[-80]">
-                <Image src="/assets/images/worldmap1.jpg" alt="World Map" fill className="object-contain" />
-              </div>
-              {PINS.map((pin) => <MapPin key={pin.name} {...pin} pulse />)}
-            </div>
+            {/* Base scene — visible normally */}
+            <MapCardScene stats={stats} pulse />
 
             {/* Magnifying glass lens */}
             {isHovering && (
               <div
                 className="absolute pointer-events-none z-30"
                 style={{
-                  width: LENS_SIZE, height: LENS_SIZE,
-                  left: mouse.x - LENS_SIZE / 2, top: mouse.y - LENS_SIZE / 2,
-                  borderRadius: '50%', overflow: 'hidden',
+                  width: LENS_SIZE,
+                  height: LENS_SIZE,
+                  left: mouse.x - LENS_SIZE / 2,
+                  top: mouse.y - LENS_SIZE / 2,
+                  borderRadius: '50%',
+                  overflow: 'hidden',
                   boxShadow: '0 0 0 3px rgba(255,255,255,0.7), 0 0 0 7px rgba(0,0,0,0.2), 0 8px 32px rgba(0,0,0,0.5)',
                   border: '2px solid rgba(255,255,255,0.9)',
                 }}
               >
-                {/* Entire content cloned & scaled from mouse point */}
+                {/* Full scene clone scaled from mouse point */}
                 <div style={{
                   position: 'absolute',
-                  width: W, height: H,
+                  width: W,
+                  height: H,
                   transform: `scale(${ZOOM})`,
                   transformOrigin: `${mouse.x}px ${mouse.y}px`,
                   left: -(mouse.x - LENS_SIZE / 2),
                   top: -(mouse.y - LENS_SIZE / 2),
                   background: 'linear-gradient(135deg, var(--color-brand-three), var(--color-brand-four))',
                 }}>
-                  {/* Map */}
-                  <div className="absolute inset-[-80]">
-                    <Image src="/assets/images/worldmap1.jpg" alt="" fill className="object-contain" />
-                  </div>
-                  {/* Pins (no pulse inside lens — cleaner) */}
-                  {PINS.map((pin) => <MapPin key={pin.name} {...pin} pulse={false} />)}
+                  {/* Clone entire scene — map + pins + text */}
+                  <MapCardScene stats={stats} pulse={false} />
                 </div>
 
                 {/* Lens glare */}
@@ -258,34 +284,15 @@ export default function AboutSection() {
             {/* Magnifier handle */}
             {isHovering && (
               <div className="absolute pointer-events-none z-40" style={{
-                left: mouse.x + LENS_SIZE / 2 - 12, top: mouse.y + LENS_SIZE / 2 - 12,
+                left: mouse.x + LENS_SIZE / 2 - 12,
+                top: mouse.y + LENS_SIZE / 2 - 12,
                 width: 32, height: 10,
-                background: 'rgba(180,180,180,0.9)', borderRadius: 5,
-                transform: 'rotate(45deg)', boxShadow: '0 2px 8px rgba(0,0,0,0.5)',
+                background: 'rgba(180,180,180,0.9)',
+                borderRadius: 5,
+                transform: 'rotate(45deg)',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.5)',
               }} />
             )}
-
-            {/* Content (title + stats) */}
-            <div className="relative z-10">
-              <motion.h3
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.8 }}
-                className="text-2xl md:text-3xl font-bold text-gray-800 mb-2"
-              >
-                Building Digital Products
-              </motion.h3>
-              <div className="space-y-6 mt-18 md:mt-65">
-                {stats.map((stat, index) => (
-                  <motion.div key={stat.label}
-                    initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
-                  >
-                    <p className="text-4xl md:text-6xl font-bold text-gray-800 mb-1">{stat.value}</p>
-                    <p className="text-gray-800/80 mb-5 text-sm">{stat.label}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
           </motion.div>
 
         </div>

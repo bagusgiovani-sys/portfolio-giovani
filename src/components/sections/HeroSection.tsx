@@ -47,7 +47,7 @@ export default function HeroSection() {
       </div>
 
       {/* Photo + floating cards */}
-      <div className="relative h-[500px] md:h-[600px] lg:mt-[-190px] w-full">
+      <div className="relative h-[500px] md:h-[590px] md:mt-[-195px] w-full">
 
         {/* Profile Image */}
         {!imageError && (
