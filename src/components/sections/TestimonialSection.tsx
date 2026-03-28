@@ -29,7 +29,7 @@ export default function TestimonialsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center"
+          className="text-3xl md:text-4xl font-bold text-brand-one mb-12 text-center"
         >
           {title}
         </motion.h2>
@@ -40,7 +40,7 @@ export default function TestimonialsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-sm md:text-base text-muted-foreground text-center mb-10 max-w-xl mx-auto"
+            className="text-sm md:text-base text-brand-two text-center mb-10 max-w-xl mx-auto"
           >
             {subtitle}
           </motion.p>
@@ -52,7 +52,7 @@ export default function TestimonialsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-card rounded-3xl p-6 md:p-12 shadow-sm border border-border mb-8 touch-pan-y cursor-grab active:cursor-grabbing"
+          className="bg-brand-four rounded-3xl p-6 md:p-12 shadow-sm border border-border mb-8 touch-pan-y cursor-grab active:cursor-grabbing"
           onTouchStart={handleSwipeStart}
           onMouseDown={handleSwipeStart}
         >
@@ -66,12 +66,12 @@ export default function TestimonialsSection() {
               className="text-center"
             >
               <div className="flex items-center justify-center mb-6">
-                <span className="text-xs md:text-sm font-medium text-muted-foreground bg-muted px-4 py-1.5 rounded-full">
+                <span className="text-xs md:text-sm font-medium text-brand-three bg-brand-two px-4 py-1.5 rounded-full">
                   {active.company}
                 </span>
               </div>
 
-              <p className="text-base text-foreground leading-relaxed mb-8 max-w-xl mx-auto">
+              <p className="text-base text-brand-one leading-relaxed mb-8 max-w-xl mx-auto">
                 {active.text}
               </p>
 
@@ -84,7 +84,7 @@ export default function TestimonialsSection() {
                 ))}
               </div>
 
-              <h4 className="text-lg font-bold text-foreground mb-1">
+              <h4 className="text-lg font-bold text-gray-700 mb-1">
                 {active.author}
               </h4>
               <p className="text-sm text-muted-foreground">{active.role}</p>
@@ -98,7 +98,7 @@ export default function TestimonialsSection() {
               key={index}
               onClick={() => setActiveIndex(index)}
               className={`h-2 rounded-full transition-all duration-300 ${index === activeIndex
-                  ? "w-8 bg-primary-300"
+                  ? "w-8 bg-brand-one"
                   : "w-2 bg-muted-foreground/30"
                 }`}
               aria-label={`Go to testimonial ${index + 1}`}

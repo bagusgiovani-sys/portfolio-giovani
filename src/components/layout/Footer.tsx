@@ -25,7 +25,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-primary-400 py-8 md:py-6 px-4 md:px-8">
+    <footer className="bg-stone-900/90 backdrop-blur-md py-8 md:py-6 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
 
         {/* Mobile Layout - Stacked */}

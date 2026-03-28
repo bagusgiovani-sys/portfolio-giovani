@@ -1,6 +1,6 @@
 'use client'
-import { motion } from 'framer-motion'
-import { Check, X } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Check, X, ChevronUp } from 'lucide-react'
 import { useState } from 'react'
 
 function CurvyLines() {
@@ -28,30 +28,51 @@ function CurvyLines() {
           strokeDasharray="12 6"
           initial={{ strokeDashoffset: 0 }}
           animate={{ strokeDashoffset: -80 }}
-          transition={{
-            duration: 2.5,
-            repeat: Infinity,
-            ease: 'linear',
-            delay: i * 0.3,
-          }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: 'linear', delay: i * 0.3 }}
         />
       ))}
     </motion.svg>
   )
 }
 
+const comparisons = [
+  {
+    skill: 'React Expert',
+    detail: 'Deep mastery of the React ecosystem — hooks, context, performance patterns, Zustand, TanStack Query, and component architecture that scales.',
+  },
+  {
+    skill: 'Perfect Pixel',
+    detail: 'Translating Figma into living UI with sub-pixel precision. Every spacing, shadow, and transition matches — or exceeds — the original design.',
+  },
+  {
+    skill: 'TypeScript Proficiency',
+    detail: 'Writing strictly typed, self-documenting code. Generics, utility types, discriminated unions — type safety as a first-class feature.',
+  },
+  {
+    skill: 'Clean, Maintainable Code',
+    detail: 'Atomic design, feature-based folder structure, and SOLID principles. Code that new teammates can read in minutes, not days.',
+  },
+  {
+    skill: 'Performance Optimization',
+    detail: 'Lazy loading, code splitting, memoization, and bundle analysis. Real Lighthouse scores — not just theoretical knowledge.',
+  },
+  {
+    skill: 'Responsive Website',
+    detail: 'Mobile-first layouts that feel native on every breakpoint. Touch gestures, viewport units, fluid typography — no breakpoint left behind.',
+  },
+  {
+    skill: 'UI Design Proficiency (Figma)',
+    detail: 'Figma slicing near perfection. Auto-layout, component variants, design tokens — bridging design and dev with zero lost-in-translation.',
+  },
+]
+
 export default function WhyMeSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
 
-  const comparisons = [
-    { skill: 'React Expert', me: true, other: false },
-    { skill: 'Perfect Pixel', me: true, other: false },
-    { skill: 'TypeScript Proficiency', me: true, other: false },
-    { skill: 'Clean, Maintainable Code', me: true, other: false },
-    { skill: 'Performance Optimization', me: true, other: false },
-    { skill: 'Responsive Website', me: true, other: false },
-    { skill: 'UI Design Proficiency (Figma)', me: true, other: false },
-  ]
+  const handleClick = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index)
+  }
 
   return (
     <section id="why-me" className="bg-background py-16 px-4 md:px-8">
@@ -77,52 +98,107 @@ export default function WhyMeSection() {
           {/* Header */}
           <div className="px-4 py-4 bg-brand-one">
             <div className="bg-brand-four rounded-full px-8 lg:px-36 py-4 flex items-center justify-between">
-              <span className="text-base lg:text-2xl font-semibold text-gray-700">
-                Skill
-              </span>
-              <div className="flex gap-5 lg:gap-4">
-                <span className="w-16 text-base lg:text-2xl font-semibold text-gray-700 text-center">
-                  Me
-                </span>
-                <span className="w-16 text-base lg:text-2xl font-semibold text-gray-700 text-center">
-                  Other
-                </span>
+              <span className="text-base lg:text-2xl font-semibold text-gray-700">Skill</span>
+              <div className="flex md:gap-8">
+                <span className="w-16 text-base lg:text-2xl font-semibold text-gray-700 text-center">Me</span>
+                <span className="w-16 text-base lg:text-2xl font-semibold text-gray-700 text-center">Other</span>
               </div>
             </div>
           </div>
 
           {/* Rows */}
           <div className="divide-y divide-border">
-            {comparisons.map((item, index) => (
-              <motion.div
-                key={item.skill}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
-                onHoverStart={() => setHoveredIndex(index)}
-                onHoverEnd={() => setHoveredIndex(null)}
-                className="relative px-8 lg:px-40 py-5 flex items-center justify-between cursor-default overflow-hidden"
-              >
-                {hoveredIndex === index && <CurvyLines />}
+            {comparisons.map((item, index) => {
+              const isExpanded = expandedIndex === index
+              const isHovered = hoveredIndex === index
 
-                <span className="relative z-10 text-sm md:text-lg font-medium text-brand-three leading-snug">
-                  {item.skill}
-                </span>
-                <div className="relative z-10 flex gap-4">
-                  <div className="w-16 flex justify-center">
-                    <div className="w-8 h-8 rounded-full bg-brand-four flex items-center justify-center">
-                      <Check className="w-5 h-5 text-gray-700 stroke-[3]" />
+              return (
+                <div key={item.skill}>
+                  {/* Main row */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
+                    onHoverStart={() => setHoveredIndex(index)}
+                    onHoverEnd={() => setHoveredIndex(null)}
+                    onClick={() => handleClick(index)}
+                    className="relative px-8 lg:px-40 py-5 flex items-center justify-between cursor-pointer overflow-hidden group"
+                  >
+                    {isHovered && !isExpanded && <CurvyLines />}
+
+                    <div className="relative z-10 flex items-center gap-3">
+                      <span className="text-sm md:text-lg font-medium text-brand-three leading-snug">
+                        {item.skill}
+                      </span>
+                      {/* Read more hint */}
+                      <AnimatePresence>
+                        {isHovered && !isExpanded && (
+                          <motion.span
+                            initial={{ opacity: 0, x: -6 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -6 }}
+                            transition={{ duration: 0.2 }}
+                            className="text-xs text-brand-four/80 font-medium"
+                          >
+                            read more →
+                          </motion.span>
+                        )}
+                        {isExpanded && (
+                          <motion.span
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="text-xs text-brand-four/60 font-medium"
+                          >
+                            collapse ↑
+                          </motion.span>
+                        )}
+                      </AnimatePresence>
                     </div>
-                  </div>
-                  <div className="w-16 flex justify-center">
-                    <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center">
-                      <X className="w-5 h-5 text-muted-foreground stroke-[3]" />
+
+                    <div className="relative z-10 flex pr-3 md:pr-0 gap-1 md:gap-8">
+                      <div className="w-16 flex justify-center">
+                        <div className="w-8 h-8 rounded-full bg-brand-four flex items-center justify-center">
+                          <Check className="w-5 h-5 text-gray-700 stroke-[3]" />
+                        </div>
+                      </div>
+                      <div className="w-16 flex justify-center">
+                        <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center">
+                          <X className="w-5 h-5 text-muted-foreground stroke-[3]" />
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  </motion.div>
+
+                  {/* Expanded detail panel */}
+                  <AnimatePresence>
+                    {isExpanded && (
+                      <motion.div
+                        key="detail"
+                        initial={{ opacity: 0, height: 0, y: -10 }}
+                        animate={{ opacity: 1, height: 'auto', y: 0 }}
+                        exit={{ opacity: 0, height: 0, y: -10 }}
+                        transition={{ duration: 0.35, ease: 'easeInOut' }}
+                        className="overflow-hidden"
+                      >
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.25, delay: 0.1 }}
+                          className="px-8 lg:px-40 py-5 bg-brand-two/30 border-t border-brand-three/20"
+                        >
+                          <p className="text-sm md:text-base text-brand-four leading-relaxed">
+                            {item.detail}
+                          </p>
+                        </motion.div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
-              </motion.div>
-            ))}
+              )
+            })}
           </div>
         </motion.div>
 
@@ -130,3 +206,4 @@ export default function WhyMeSection() {
     </section>
   )
 }
+

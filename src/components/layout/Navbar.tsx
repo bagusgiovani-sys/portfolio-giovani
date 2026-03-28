@@ -138,7 +138,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="fixed top-0 right-0 bottom-0 z-50 w-72 bg-primary-400 shadow-2xl lg:hidden flex flex-col"
+              className="fixed top-0 right-0 bottom-0 z-50 w-72 bg-gray-900/90 shadow-2xl lg:hidden flex flex-col"
             >
               {/* Drawer header */}
               <div className="flex items-center justify-between px-6 h-16 border-b border-white/10">
@@ -147,7 +147,7 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className="text-white/70 hover:text-white p-1 transition-colors"
                   aria-label="Close menu"
-                >
+                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>

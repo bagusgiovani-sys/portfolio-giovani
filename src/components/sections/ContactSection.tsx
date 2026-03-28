@@ -69,9 +69,9 @@ export default function ContactSection() {
               ].map(({ icon: Icon, text }) => (
                 <div key={text} className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-5 h-5 text-primary-300" />
+                    <Icon className="w-5 h-5 text-brand-one" />
                   </div>
-                  <span className="text-sm text-foreground">{text}</span>
+                  <span className="text-sm text-gray-700">{text}</span>
                 </div>
               ))}
             </div>
@@ -83,12 +83,12 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="w-full lg:w-[480px] xl:w-[520px] bg-card rounded-3xl p-8 shadow-sm border border-border flex-shrink-0"
+            className="w-full lg:w-[480px] xl:w-[520px] bg-brand-one rounded-3xl p-8 shadow-sm border border-border flex-shrink-0"
           >
             {/* Mobile only — title + contact info inside card */}
             <div className="lg:hidden mb-8">
-              <h2 className="text-3xl font-bold text-foreground mb-2">{title}</h2>
-              <p className="text-sm text-muted-foreground mb-6">{subtitle}</p>
+              <h2 className="text-3xl font-bold text-brand-four mb-2">{title}</h2>
+              <p className="text-sm text-brand-three mb-6">{subtitle}</p>
               <div className="space-y-4">
                 {[
                   { icon: Smartphone, text: phone },
@@ -96,10 +96,10 @@ export default function ContactSection() {
                   { icon: MapPin, text: location },
                 ].map(({ icon: Icon, text }) => (
                   <div key={text} className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-5 h-5 text-primary-300" />
+                    <div className="w-10 h-10 rounded-full bg-brand-four flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-5 h-5 text-brand-one" />
                     </div>
-                    <span className="text-sm text-foreground">{text}</span>
+                    <span className="text-sm text-brand-three" >{text}</span>
                   </div>
                 ))}
               </div>
@@ -107,10 +107,10 @@ export default function ContactSection() {
 
             {/* Form */}
             <form onSubmit={handleSubmit}>
-              <h3 className="text-lg font-semibold text-foreground mb-4">Send a Message</h3>
+              <h3 className="text-lg font-semibold text-brand-four mb-4">Send a Message</h3>
 
               <div className="mb-4">
-                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="name" className="block text-sm font-medium text-brand-three mb-2">
                   Name
                 </label>
                 <input
@@ -120,13 +120,13 @@ export default function ContactSection() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-background border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                  className="w-full px-4 py-3 bg-background border border-border rounded-xl text-brand-three placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
                   placeholder="Your name"
                 />
               </div>
 
               <div className="mb-4">
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-brand-three mb-2">
                   Email
                 </label>
                 <input
@@ -136,13 +136,13 @@ export default function ContactSection() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-background border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                  className="w-full px-4 py-3 bg-background border border-border rounded-xl text-brand-three placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
                   placeholder="your.email@example.com"
                 />
               </div>
 
               <div className="mb-6">
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-brand-three mb-2">
                   Message
                 </label>
                 <textarea
@@ -160,7 +160,7 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-primary-300 text-white font-semibold py-3.5 px-6 rounded-full hover:bg-primary/90 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full bg-brand-four text-brand-one font-semibold py-3.5 px-6 rounded-full hover:bg-primary/90 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 <Send className="w-4 h-4" />
                 {isSubmitting ? 'Sending...' : 'Submit'}
@@ -169,16 +169,8 @@ export default function ContactSection() {
           </motion.div>
         </div>
 
-        {/* Floor image */}
-        <div className="mt-1">
-          <Image
-            src="/assets/images/CTA_Floor.svg"
-            alt="Floor"
-            width={1200}
-            height={400}
-            className="w-full mb-[-60px] h-auto rounded-2xl"
-          />
-        </div>
+        {/* 3D Spline image */}
+        
 
       </div>
 
@@ -240,7 +232,7 @@ export default function ContactSection() {
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.9 }}
                   onClick={() => setModalState(null)}
-                  className="w-full bg-primary-300 text-white font-semibold py-3 px-6 rounded-full hover:bg-primary/90 transition-colors duration-300"
+                  className="w-full bg-brand-four text-brand-one font-semibold py-3 px-6 rounded-full hover:bg-primary/90 transition-colors duration-300"
                 >
                   {modalState === 'success' ? 'Back to Home' : 'Try Again'}
                 </motion.button>

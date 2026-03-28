@@ -21,51 +21,75 @@ export default function ExperienceSection() {
           {title}
         </motion.h2>
 
-        <div className="space-y-12">
-          {items.map((exp, index) => (
-            <motion.div
-              key={exp.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="flex flex-col lg:flex-row lg:gap-12"
-            >
-              {/* Left — Logo + Company + Period */}
-              <div className="flex flex-col lg:w-48 lg:shrink-0 mb-4 lg:mb-0">
+        {/* Outer grid — left column + right column */}
+        <div className="flex flex-col lg:flex-row lg:gap-12">
+
+          {/* Left column — all logos stacked */}
+          <div className="hidden lg:flex flex-col lg:w-48 lg:shrink-0">
+            {items.map((exp, index) => (
+              <motion.div
+                key={exp.id}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="flex flex-col mb-0"
+                style={{ paddingBottom: index < items.length - 1 ? '4.5rem' : 0 }}
+              >
                 <div className="w-32 h-16 relative mb-2">
-                  <Image
-                    src={exp.logo}
-                    alt={`${exp.company} logo`}
-                    fill
-                    className="object-contain object-left"
-                  />
+                  <Image src={exp.logo} alt={`${exp.company} logo`} fill className="object-contain object-left" />
                 </div>
                 <h3 className="text-base font-semibold text-foreground">{exp.company}</h3>
                 <p className="text-sm text-muted-foreground">{exp.period}</p>
-              </div>
+              </motion.div>
+            ))}
+          </div>
 
-              {/* Right — Timeline dot + Role + Description */}
-              <div className="relative flex gap-6 flex-1">
-                {/* Vertical dashed line + dot */}
-                <div className="flex flex-col items-center">
-                  <div className="w-6 h-6 rounded-full border-2 border-dashed border-gray-400/50 flex items-center justify-center shrink-0 mt-1">
-                    <div className="w-3.5 h-3.5 rounded-full bg-primary-300" />
+          {/* Right column — continuous timeline */}
+          <div className="relative flex-1">
+
+            {/* Continuous dashed line running full height */}
+            <div className="absolute left-[11px] top-[11px] bottom-[11px] w-px border-l-2 border-dashed border-gray-900/50" />
+
+            <div className="flex flex-col">
+              {items.map((exp, index) => (
+                <motion.div
+                  key={exp.id}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className={`flex gap-6 ${index < items.length - 1 ? 'pb-16' : ''}`}
+                >
+                  {/* Dot */}
+                  <div className="relative z-10 shrink-0 mt-1">
+                    <div className="w-6 h-6 rounded-full border-2 border-dashed border-gray-900/50 flex items-center justify-center bg-background">
+                      <div className="w-3.5 h-3.5 rounded-full bg-gray-700" />
+                    </div>
                   </div>
-                  {index < items.length - 1 && (
-                    <div className="flex-1 w-px border-l-2 border-dashed border-gray-300/50 mt-2" />
-                  )}
-                </div>
 
-                <div className="pb-4">
-                  <h4 className="text-base font-bold text-foreground mb-2">{exp.role}</h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                  {/* Mobile logo — only visible on mobile */}
+                  <div className="lg:hidden flex flex-col mb-4">
+                    <div className="w-32 h-12 relative mb-1">
+                      <Image src={exp.logo} alt={`${exp.company} logo`} fill className="object-contain object-left" />
+                    </div>
+                    <h3 className="text-base font-semibold text-foreground">{exp.company}</h3>
+                    <p className="text-sm text-muted-foreground mb-3">{exp.period}</p>
+                    <h4 className="text-base font-bold text-foreground mb-2">{exp.role}</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
+                  </div>
+
+                  {/* Desktop role + description */}
+                  <div className="hidden lg:block">
+                    <h4 className="text-base font-bold text-foreground mb-2">{exp.role}</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
         </div>
-
       </div>
     </section>
   )
