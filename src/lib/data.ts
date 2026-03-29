@@ -253,28 +253,28 @@ export const experienceData = {
   items: [
     {
       id: 1,
-      company: 'Trustpilot',
-      logo: '/assets/icons/CompanyLogo/trustpilot_logo.svg',
-      role: 'Frontend Developer',
-      period: '2021–2024',
+      company: 'Frontend Developer',
+      logo: '/assets/icons/GioF.png',
+      role: 'Frontend Developer Freelancer',
+      period: '2025–now',
       description:
         'Built responsive web interfaces using modern frameworks like React.js, ensuring seamless integration with backend systems. Optimized performance, implemented accessible designs, and delivered clean, reusable code to enhance user experience and scalability.',
     },
     {
       id: 2,
-      company: 'Postman',
-      logo: '/assets/icons/CompanyLogo/postman_logo.svg',
-      role: 'Frontend Developer',
-      period: '2021–2024',
+      company: 'Kodecoon Academy',
+      logo: '/assets/icons/CompanyLogo/kodecoon.svg',
+      role: 'Coding & Robotic Mentor',
+      period: '2024–now',
       description:
         'Built responsive web interfaces using modern frameworks like React.js, ensuring seamless integration with backend systems. Optimized performance, implemented accessible designs, and delivered clean, reusable code to enhance user experience and scalability.',
     },
     {
       id: 3,
-      company: 'Spotify',
-      logo: '/assets/icons/CompanyLogo/spotify_logo.svg',
-      role: 'Frontend Developer',
-      period: '2019–2021',
+      company: 'BrightCHAMPS',
+      logo: '/assets/icons/CompanyLogo/brightchamps.svg',
+      role: 'Coding Teacher',
+      period: '2022–2023',
       description:
         'Built responsive web interfaces using modern frameworks like React.js, ensuring seamless integration with backend systems. Optimized performance, implemented accessible designs, and delivered clean, reusable code to enhance user experience and scalability.',
     },

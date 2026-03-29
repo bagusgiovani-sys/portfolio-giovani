@@ -58,13 +58,13 @@ export default function Navbar() {
               className="flex items-center gap-3 cursor-pointer"
             >
               <Image
-                src="/assets/icons/your_logo.svg"
+                src="/assets/icons/Gio_Icon2.png"
                 alt="Your Logo"
-                width={32}
-                height={32}
+                width={64}
+                height={64}
                 className="object-contain"
               />
-              <span className="text-white font-semibold text-lg">Your Logo</span>
+      
             </motion.a>
 
             {/* Desktop Nav Links + Hire Me Button */}
