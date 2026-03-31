@@ -6,8 +6,8 @@ import Image from "next/image";
 import { Star, Mail } from "lucide-react";
 import { aboutData } from "@/lib/data";
 
-const LENS_SIZE = 150;
-const ZOOM = 2.5;
+const LENS_SIZE = 140;
+const ZOOM = 2.2;
 
 // ─── ADJUST PIN POSITIONS HERE ───────────────────────────────
 const PINS = [
@@ -179,7 +179,7 @@ function MapCardScene({
           ))}
         </div>
         <p className="text-center text-[5px] md:text-[8px] text-gray-700/80 leading-relaxed">
-          Taught students globally — Python games, HTML projects, real
+          Taught students globally — Python projects, HTML projects, real
           deadlines. Built the communication skills, cross-timezone patience,
           and cultural fluency that shaped me into a globally-ready frontend
           developer.
@@ -294,6 +294,7 @@ export default function AboutSection() {
             ))}
           </motion.div>
 
+          {/* Tech Stack */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -316,16 +317,16 @@ export default function AboutSection() {
               Mastering modern technologies to deliver impactful and efficient
               solutions
             </p>
-            <div className="grid grid-cols-4 gap-2 ,">
+            <div className="grid grid-cols-4 gap-2">
               {techIcons.map((tech, index) => {
-                const isBigger = ["HTML5", "TypeScript"].includes(tech.name);
                 const isRedux = tech.name === "Redux";
-                const iconSize = isBigger ? 58 : isRedux ? 110 : 42;
+                const isBigger = ["HTML5", "TypeScript"].includes(tech.name);
+
                 return (
                   <div
                     key={tech.name}
-                    className="flex flex-col items-center justify-center bg-neutral-100/30 backdrop-blur-sm rounded-full p-7.5 w-13 h-13 md:w-16 md:h-16"
                     title={tech.name}
+                    className="flex items-center justify-center bg-neutral-100/30 backdrop-blur-sm rounded-full w-12 h-12 md:w-16 md:h-16"
                   >
                     <motion.div
                       initial={{ opacity: 0, scale: 0.5 }}
@@ -338,16 +339,19 @@ export default function AboutSection() {
                         type: "spring",
                         stiffness: 200,
                       }}
-                      style={{
-                        width: `${iconSize}px`,
-                        height: `${iconSize}px`,
-                      }}
+                      className={
+                        isRedux
+                          ? "w-12 h-12 md:w-20 md:h-20"
+                          : isBigger
+                            ? "w-10 h-10 md:w-14 md:h-14"
+                            : "w-8 h-8 md:w-11 md:h-11"
+                      }
                     >
                       <Image
                         src={tech.icon}
                         alt={tech.name}
-                        width={iconSize}
-                        height={iconSize}
+                        width={58}
+                        height={58}
                         className="w-full h-full object-contain"
                       />
                     </motion.div>

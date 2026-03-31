@@ -24,14 +24,14 @@ const FEATURED: FeaturedProject[] = [
     title: 'Movie App API',
     image: '/assets/movieapp.gif',
     link: 'https://movie-app-by-giovani.vercel.app/',
-    badges: ['React JS', 'Feature-based Arch', 'Framer Motion', 'Redux', 'Axios', 'TanStack Query'],
+    badges: ['React JS', 'Framer Motion', 'Redux', 'Axios', 'TanStack Query'],
   },
   {
     id: 2,
     title: 'Instagram Clone App',
     image: '/assets/sociality.gif',
     link: 'https://sociality-app-by-gio.vercel.app/',
-    badges: ['Next JS', 'Framer Motion', 'Optimistic UI', 'Radix', 'Redux', 'TanStack Query'],
+    badges: ['Next JS', 'Lazy Loading', 'Optimistic UI', 'Radix', 'Redux',],
   },
 ]
 
@@ -45,7 +45,7 @@ function FeaturedCard({ project }: { project: FeaturedProject }) {
       href={project.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="relative flex-2 w-[190px] md:w-[330px] h-[190px] md:h-[330px] block overflow-hidden"
+      className="relative flex-2 w-[190px] md:w-[380px] h-[190px] md:h-[360px] block overflow-hidden"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -53,7 +53,7 @@ function FeaturedCard({ project }: { project: FeaturedProject }) {
       <motion.div
         animate={{ scale: hovered ? 1.06 : 1 }}
         transition={{ duration: 0.45, ease: 'easeOut' }}
-        className="relative w-[320px] md:w-[420px] h-[120px] md:h-[220px] scale-120"
+        className="relative w-[320px] md:w-[400px] h-[120px] md:h-[270px] scale-100"
       >
         <Image
           src={project.image}
@@ -84,14 +84,14 @@ function FeaturedCard({ project }: { project: FeaturedProject }) {
       {/* Bottom overlay: title + badges */}
       <div className="absolute bottom-0 left-0 right-0 z-10 p-4 bg-gradient-to-t from-black/85 via-black/50 to-transparent">
         <div className="flex items-center gap-2 mb-2.5">
-          <h3 className="text-white font-bold text-xs md:text-base leading-tight">{project.title}</h3>
+          <h3 className="text-white font-bold text-xs md:text-[14px] leading-tight">{project.title}</h3>
           <ExternalLink className="w-3.5 h-3.5 text-white/70 shrink-0" />
         </div>
         <div className="flex flex-wrap gap-1.5">
           {project.badges.map((badge) => (
             <span
               key={badge}
-              className="text-[4px] md:text-[10px] font-medium px-2 py-0.5 rounded-full bg-brand-four/20 text-brand-four border border-brand-four/30 backdrop-blur-sm"
+              className="text-[4px] md:text-[9px] font-medium px-2 py-0.5 rounded-full bg-brand-four/20 text-brand-four border border-brand-four/30 backdrop-blur-sm"
             >
               {badge}
             </span>
@@ -146,7 +146,7 @@ function OtherCard({ item, index, position, isHovered, onHover, onLeave }: Other
           }
           : { duration: 0.3 }
       }
-      className="bg-card border border-border rounded-2xl overflow-hidden shadow-xl cursor-pointer group w-full"
+      className="bg-brand-four border border-border rounded-2xl overflow-hidden shadow-xl cursor-pointer group w-full"
     >
       <div className="relative aspect-video w-full overflow-hidden">
         {!imageError ? (
@@ -154,12 +154,12 @@ function OtherCard({ item, index, position, isHovered, onHover, onLeave }: Other
             src={item.image}
             alt={item.title}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-cover transition-transform duration-300 group-hover:scale-125"
             onError={() => setImageError(true)}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-muted">
-            <p className="text-xs text-muted-foreground">Project Image</p>
+            <p className="text-3xl text-muted-foreground">Project Image</p>
           </div>
         )}
         <div className="absolute top-3 left-3 right-3 flex justify-between">
@@ -256,7 +256,7 @@ export default function ProjectSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="relative flex rounded-2xl overflow-hidden mb-20 max-w-2xl mx-auto"
+          className="relative flex rounded-2xl overflow-hidden mb-20 max-w-3xl mx-auto"
         >
           {FEATURED.map((project, i) => (
             <div key={project.id} className="flex-1 relative">

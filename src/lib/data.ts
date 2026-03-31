@@ -18,12 +18,6 @@ export const heroData = {
     clientsLabel: 'Global Clients',
   },
   badges: ['Frontend Developer', 'React Expert'],
-  bio: {
-    greeting: "Hi, I'm Bagus Giovani 👋",
-    highlight:
-      'Building digital products with a focus on crafting visually engaging and seamless user interfaces using React.js.',
-    body: 'Prioritizing responsive design, performance optimization, and user-centric features to deliver exceptional web experiences.',
-  },
   ticker: [
     'TypeScript Pro',
     ' React Expert',
@@ -50,8 +44,8 @@ export const aboutData = {
   bio: {
     greeting: "Hi, I'm Bagus Giovani 👋",
     highlight:
-      'Building digital products with a focus on crafting visually engaging and seamless user interfaces using React.js.',
-    body: 'Prioritizing responsive design, performance optimization, and user-centric features to deliver exceptional web experiences.',
+      'Build pixel-perfect UIs with real design sense—not AI guesswork.',
+    body: 'Utilizing AI tools to move fast, manually review and refine for accuracy, performance, and clean architecture. No vibe coding, just production-ready results.',
   },
   techIcons: [
     { name: 'TypeScript', icon: '/assets/icons/ts_logo.svg' },
@@ -184,7 +178,7 @@ export interface Project {
 }
 
 export const projectsData = {
-  title: 'My Latest Work',
+  title: 'My Latest Works',
   items: [
     {
       id: 1,
@@ -197,7 +191,7 @@ export const projectsData = {
     {
       id: 2,
       title: 'Sociality',
-      category: 'Social Media Web APP',
+      category: 'Social Media',
       year: '2026',
       image: '/assets/sociality.gif',
       link: 'https://sociality-app-by-gio.vercel.app/',
@@ -213,7 +207,7 @@ export const projectsData = {
     {
       id: 4,
       title: 'Booky App',
-      category: 'Dashboard Web App',
+      category: 'Admin & User Web App',
       year: '2023',
       image: '/assets/Booky.png',
       link: 'https://booky-app-by-gio.vercel.app/',
@@ -229,7 +223,7 @@ export const projectsData = {
     {
       id: 6,
       title: 'Foody App',
-      category: 'Dashboard Web App',
+      category: 'Food Commerce Web App',
       year: '2026',
       image: '/assets/images/CardBackground/image-6.svg',
       link: 'https://example.com/project-6',
@@ -267,7 +261,7 @@ export const experienceData = {
       role: 'Coding & Robotic Mentor',
       period: '2024–now',
       description:
-        'Built responsive web interfaces using modern frameworks like React.js, ensuring seamless integration with backend systems. Optimized performance, implemented accessible designs, and delivered clean, reusable code to enhance user experience and scalability.',
+        'Mentor global students in coding and robotics, specializing in web development, Python, and Roblox Lua. Proven track record with international awards, including 1st Place at Hack@Code Singapore 2025 and won 1 gold medal and 1 silver medal at FLL Singapore 2026.',
     },
     {
       id: 3,
@@ -377,11 +371,11 @@ export const faqData = {
 export const contactData = {
   title: "I've been waiting for you.",
   subtitle: 'Fill in the form or Send us an email',
-  phone: '+62 1234567890',
-  email: 'edwinanderson@email.com',
+  phone: '+62 895363404163',
+  email: 'bagusgiovani@gmail.com',
   location: 'Jakarta, Indonesia',
   socials: {
-    dribbble: '#',
+    github: '#',
     instagram: '#',
     linkedin: '#',
   },
