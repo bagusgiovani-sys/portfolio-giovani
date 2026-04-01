@@ -35,11 +35,17 @@ export default function ExperienceSection() {
                 className="flex flex-col"
                 style={{ paddingBottom: index < items.length - 1 ? '4.5rem' : 0 }}
               >
-                <div className="w-25 h-25 relative mb-5">
-                  <Image src={exp.logo} alt={`${exp.company} logo`} fill className="object-contain object-left" />
+                <div className="relative mb-5">
+                  <Image 
+                  src={exp.logo} 
+                  alt={`${exp.company} logo`}
+                  width={exp.logoSize.width}
+                  height={exp.logoSize.height} 
+                  className="object-contain object-left" />
                 </div>
                 <h3 className="text-base font-semibold text-foreground">{exp.company}</h3>
-                <p className="text-sm text-muted-foreground">{exp.period}</p>
+                <p className="text-xs text-muted-foreground mb-1">{exp.about}</p>
+                <p className="text-sm font-bold text-muted-foreground">{exp.period}</p>
               </motion.div>
             ))}
           </div>

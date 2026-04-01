@@ -236,6 +236,8 @@ export const projectsData = {
 export interface Experience {
   id: number
   company: string
+  about: string
+  logoSize: { width: number; height: number }
   logo: string
   role: string
   period: string
@@ -248,6 +250,8 @@ export const experienceData = {
     {
       id: 1,
       company: 'Frontend Developer',
+      about: 'Freelance',
+      logoSize: { width: 140, height: 140 },
       logo: '/assets/icons/GioF.png',
       role: 'Frontend Developer Freelancer',
       period: '2025–now',
@@ -257,7 +261,9 @@ export const experienceData = {
     {
       id: 2,
       company: 'Kodecoon Academy',
+      about: 'Singapore based coding and robotics EduTech',
       logo: '/assets/icons/CompanyLogo/kodecoon.svg',
+      logoSize: { width: 580, height: 580 },
       role: 'Coding & Robotic Mentor',
       period: '2024–now',
       description:
@@ -266,11 +272,13 @@ export const experienceData = {
     {
       id: 3,
       company: 'BrightCHAMPS',
+      about: "Indian based coding EduTech",
       logo: '/assets/icons/CompanyLogo/brightchamps.svg',
+      logoSize: { width: 280, height: 280 },
       role: 'Coding Teacher',
       period: '2022–2023',
       description:
-        'Built responsive web interfaces using modern frameworks like React.js, ensuring seamless integration with backend systems. Optimized performance, implemented accessible designs, and delivered clean, reusable code to enhance user experience and scalability.',
+        'Mentored students through hands-on Python projects (2D RPG, space shooter), focusing on logic building, game mechanics, and real-world coding skills.',
     },
   ] satisfies Experience[],
 }
