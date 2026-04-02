@@ -49,7 +49,7 @@ export const aboutData = {
   },
   techIcons: [
     { name: 'TypeScript', icon: '/assets/icons/ts_logo.svg' },
-    { name: 'TailwindCSS', icon: '/assets/icons/Tailwind_CSS_logo.svg' },
+    { name: 'TailwindCSS', icon: '/assets/icons/Tailwind_CSS_Logo.svg' },
     { name: 'React', icon: '/assets/icons/React_logo.svg' },
     { name: 'Next.js', icon: '/assets/icons/nextjs_logo.svg' },
     { name: 'FramerMotion', icon: '/assets/icons/framer-motion_logo.svg' },
