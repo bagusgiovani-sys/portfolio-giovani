@@ -182,11 +182,11 @@ export const projectsData = {
   items: [
     {
       id: 1,
-      title: 'Movie App API',
-      category: 'Web APP',
+      title: 'Paleo Link',
+      category: 'Landing Page',
       year: '2026',
-      image: '/assets/movieapp.gif',
-      link: 'https://movie-app-by-giovani.vercel.app/',
+      image: '/assets/PaleoLink.gif',
+      link: 'https://paleo-link-dig-site-locator.vercel.app'
     },
     {
       id: 2,
@@ -198,11 +198,11 @@ export const projectsData = {
     },
     {
       id: 3,
-      title: 'Paleo Link',
-      category: 'Landing Page',
+      title: 'Movie App',
+      category: 'Web App',
       year: '2026',
-      image: '/assets/PaleoLink.gif',
-      link: 'https://paleo-link-dig-site-locator.vercel.app/',
+      image: '/assets/movieapp.gif',
+      link: 'https://movie-app-by-giovani.vercel.app//',
     },
     {
       id: 4,
@@ -237,8 +237,8 @@ export interface Experience {
   id: number
   company: string
   about: string
-  logoSize: { width: number; height: number }
   logo: string
+  logoSize: { width: number; height: number }
   role: string
   period: string
   description: string
@@ -249,36 +249,33 @@ export const experienceData = {
   items: [
     {
       id: 1,
-      company: 'Frontend Developer',
+      company: 'Frontend Engineer',
       about: 'Freelance',
-      logoSize: { width: 140, height: 140 },
-      logo: '/assets/icons/GioF.png',
-      role: 'Frontend Developer Freelancer',
+      logo: '/assets/icons/CompanyLogo/GioF2.png',
+      logoSize: { width: 160, height: 60 },
+      role: 'Freelancer',
       period: '2025–now',
-      description:
-        'Built responsive web interfaces using modern frameworks like React.js, ensuring seamless integration with backend systems. Optimized performance, implemented accessible designs, and delivered clean, reusable code to enhance user experience and scalability.',
+      description: 'Built responsive web interfaces using modern frameworks like React.js, ensuring seamless integration with backend systems. Optimized performance, implemented accessible designs, and delivered clean, reusable code to enhance user experience and scalability',
     },
     {
       id: 2,
       company: 'Kodecoon Academy',
       about: 'Singapore based coding and robotics EduTech',
-      logo: '/assets/icons/CompanyLogo/kodecoon.svg',
-      logoSize: { width: 580, height: 580 },
+      logo: '/assets/icons/CompanyLogo/Kodecoon2.png',
+      logoSize: { width: 180, height: 60 },
       role: 'Coding & Robotic Mentor',
       period: '2024–now',
-      description:
-        'Mentor global students in coding and robotics, specializing in web development, Python, and Roblox Lua. Proven track record with international awards, including 1st Place at Hack@Code Singapore 2025 and won 1 gold medal and 1 silver medal at FLL Singapore 2026.',
+      description: 'Mentor global students in coding and robotics, specializing in web development, Python, and Roblox Lua. Proven track record with international awards, including 1st Place at Hack@Code Singapore 2025 and multiple wins at FLL Singapore 2026.',
     },
     {
       id: 3,
       company: 'BrightCHAMPS',
-      about: "Indian based coding EduTech",
-      logo: '/assets/icons/CompanyLogo/brightchamps.svg',
-      logoSize: { width: 280, height: 280 },
+      about: 'Indian based coding EduTech',
+      logo: '/assets/icons/CompanyLogo/BrightCHAMPS2.png',
+      logoSize: { width: 180, height: 50 },
       role: 'Coding Teacher',
       period: '2022–2023',
-      description:
-        'Mentored students through hands-on Python projects (2D RPG, space shooter), focusing on logic building, game mechanics, and real-world coding skills.',
+      description: 'Guided students in building Python-based projects, including 2D RPGs and space shooter games, while strengthening problem-solving and programming fundamentals.',
     },
   ] satisfies Experience[],
 }

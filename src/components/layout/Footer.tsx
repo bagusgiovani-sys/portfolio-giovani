@@ -1,21 +1,21 @@
 'use client'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Globe, Instagram, Linkedin } from 'lucide-react'
+import { Github, Instagram, Linkedin } from 'lucide-react'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   const socialLinks = [
     {
-      name: 'Website',
-      icon: Globe,
-      href: 'https://yourwebsite.com',
+      name: 'GitHub',
+      icon: Github,
+      href: 'https://github.com/bagusgiovani-sys/',
     },
     {
       name: 'Instagram',
       icon: Instagram,
-      href: 'https://instagram.com/yourusername',
+      href: 'https://www.instagram.com/bagusgiovani/',
     },
     {
       name: 'LinkedIn',
@@ -97,13 +97,12 @@ export default function Footer() {
             {/* Logo */}
             <div className="flex items-center gap-3">
               <Image
-                src="/assets/icons/your_logo.svg"
+                src="/assets/icons/Gio_Icon2.png"
                 alt="Your Logo"
-                width={32}
-                height={32}
+                width={64}
+                height={64}
                 className="object-contain"
               />
-              <span className="text-white font-semibold text-lg">Your Logo</span>
             </div>
 
             {/* Copyright */}

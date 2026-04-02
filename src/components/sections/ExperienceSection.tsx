@@ -21,10 +21,10 @@ export default function ExperienceSection() {
           {title}
         </motion.h2>
 
-        <div className="flex flex-col lg:flex-row lg:gap-12">
+        <div className="flex flex-col md:flex-row md:gap-12">
 
           {/* Left column — logos (desktop only) */}
-          <div className="hidden lg:flex flex-col lg:w-48 lg:shrink-0">
+          <div className="hidden md:flex flex-col shrink-0">
             {items.map((exp, index) => (
               <motion.div
                 key={exp.id}
@@ -32,17 +32,15 @@ export default function ExperienceSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex flex-col"
-                style={{ paddingBottom: index < items.length - 1 ? '4.5rem' : 0 }}
+                className={`flex flex-col ${index < items.length - 1 ? 'pb-16' : ''}`}
               >
-                <div className="relative mb-5">
-                  <Image 
-                  src={exp.logo} 
+                <Image
+                  src={exp.logo}
                   alt={`${exp.company} logo`}
                   width={exp.logoSize.width}
-                  height={exp.logoSize.height} 
-                  className="object-contain object-left" />
-                </div>
+                  height={exp.logoSize.height}
+                  className="object-contain object-left mb-2"
+                />
                 <h3 className="text-base font-semibold text-foreground">{exp.company}</h3>
                 <p className="text-xs text-muted-foreground mb-1">{exp.about}</p>
                 <p className="text-sm font-bold text-muted-foreground">{exp.period}</p>
@@ -73,16 +71,21 @@ export default function ExperienceSection() {
 
                   {/* Content */}
                   <div className="flex-1">
-                    {/* Mobile: show logo + company + period */}
-                    <div className="lg:hidden mb-3">
-                      <div className="w-28 h-10 relative mb-1">
-                        <Image src={exp.logo} alt={`${exp.company} logo`} fill className="object-contain object-left" />
-                      </div>
+                    {/* Mobile: logo + company + period */}
+                    <div className="md:hidden mb-3">
+                      <Image
+                        src={exp.logo}
+                        alt={`${exp.company} logo`}
+                        width={exp.logoSize.width}
+                        height={exp.logoSize.height}
+                        className="object-contain object-left mb-2"
+                      />
                       <h3 className="text-base font-semibold text-foreground">{exp.company}</h3>
+                      <p className="text-xs text-muted-foreground mb-1">{exp.about}</p>
                       <p className="text-sm text-muted-foreground">{exp.period}</p>
                     </div>
 
-                    {/* Role + description — both mobile and desktop */}
+                    {/* Role + description */}
                     <h4 className="text-base font-bold text-foreground mb-2 mt-8 lg:mt-10">{exp.role}</h4>
                     <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
                   </div>
