@@ -112,7 +112,7 @@ export const skillsData = {
       },
       {
         name: 'TailwindCSS',
-        icon: '/assets/icons/Tailwind_CSS_logo.svg',
+        icon: '/assets/icons/Tailwind_CSS_Logo.svg',
         description: 'Styling modern web interfaces with utility-first responsive CSS.',
         level: 90,
       },

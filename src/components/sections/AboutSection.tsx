@@ -189,7 +189,7 @@ export default function AboutSection() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="bg-brand-two rounded-xl px-6 py-10 h-[400px] md:h-[450px] lg:h-[400px] md:p-8"
           >
-            <h3 className="text-[30px] md:text-3xl font-bold text-white mb-2">Tech Stack Mastery</h3>
+            <h3 className="text-[24px] md:text-3xl font-bold text-white mb-2">Tech Stack Mastery</h3>
             <div className="flex gap-1.5 mb-4">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-5 h-5 fill-amber-500 text-amber-500" />
@@ -210,7 +210,7 @@ export default function AboutSection() {
                       viewport={{ once: true }}
                       whileHover={{ scale: 1.15, y: -5 }}
                       transition={{ duration: 0.3, delay: 0.1 + index * 0.05, type: 'spring', stiffness: 200 }}
-                      className={isRedux ? 'w-12 h-12 md:w-20 md:h-20' : isBigger ? 'w-10 h-10 md:w-14 md:h-14' : 'w-8 h-8 md:w-11 md:h-11'}
+                      className={isRedux ? 'w-14 h-14 md:w-20 md:h-20' : isBigger ? 'w-10 h-10 md:w-14 md:h-14' : 'w-8 h-8 md:w-11 md:h-11'}
                     >
                       <Image src={tech.icon} alt={tech.name} width={58} height={58} className="w-full h-full object-contain" />
                     </motion.div>

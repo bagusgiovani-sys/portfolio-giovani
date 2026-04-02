@@ -47,7 +47,7 @@ export default function HeroSection() {
       </div>
 
       {/* Photo + floating cards */}
-      <div className="relative h-[500px] md:h-[590px] md:mt-[-195px] w-full">
+      <div className="relative h-[470px] md:h-[620px] md:mt-[-195px] w-full">
 
         {/* Profile Image */}
         {!imageError && (
@@ -77,7 +77,7 @@ export default function HeroSection() {
             y: { delay: 1, duration: 7, repeat: Infinity, ease: 'easeInOut' },
           }}
           style={{ willChange: 'transform' }}
-          className="absolute top-12 lg:top-60 left-17 lg:left-[28%] lg:scale-130"
+          className="absolute top-5 lg:top-60 left-17 lg:left-[28%] lg:scale-130"
         >
           <GlassCard className="px-3 py-3">
             <p className="text-[24px] mt-0.5 font-semibold text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.8)]">
