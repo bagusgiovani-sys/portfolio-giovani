@@ -55,7 +55,7 @@ export default function HeroSection() {
             <img
               src="/assets/images/Giovani9.svg"
               alt="Bagus Giovani"
-              className="object-bottom object-contain scale-160 md:scale-65"
+              className="object-bottom object-contain scale-165 md:scale-65"
               onError={() => setImageError(true)}
             />
           </div>
