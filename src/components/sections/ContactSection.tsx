@@ -1,53 +1,67 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Smartphone, Mail, MapPin, Send } from 'lucide-react'
-import Image from 'next/image'
-import { contactData } from '@/lib/data'
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Smartphone, Mail, MapPin, Send } from "lucide-react";
+import Image from "next/image";
+import { contactData } from "@/lib/data";
 
 interface FormData {
-  name: string
-  email: string
-  message: string
+  name: string;
+  email: string;
+  message: string;
 }
 
-type ModalState = 'success' | 'error' | null
+type ModalState = "success" | "error" | null;
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState<FormData>({ name: '', email: '', message: '' })
-  const [modalState, setModalState] = useState<ModalState>(null)
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [modalState, setModalState] = useState<ModalState>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { title, subtitle, phone, email, location } = contactData
+  const { title, subtitle, phone, email, location } = contactData;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     try {
-      // Replace with your real form endpoint e.g. Formspree, Resend, etc.
-      await new Promise<void>((resolve) => setTimeout(resolve, 1000))
-      setModalState('success')
-      setFormData({ name: '', email: '', message: '' })
+      const res = await fetch("https://formspree.io/f/mzdkarrw", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error("Failed");
+      setModalState("success");
+      setFormData({ name: "", email: "", message: "" });
     } catch {
-      setModalState('error')
+      setModalState("error");
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  }
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   return (
-    <section id="contact" className="bg-background py-16 px-4 md:px-8 overflow-hidden">
+    <section
+      id="contact"
+      className="bg-background py-16 px-4 md:px-8 overflow-hidden"
+    >
       <div className="max-w-6xl mx-auto w-full">
-
         {/* Desktop: two columns | Mobile: single column card */}
         <div className="flex flex-col lg:flex-row lg:items-start lg:gap-16">
-
           {/* Left — Info (desktop only shows this outside card) */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -87,7 +101,9 @@ export default function ContactSection() {
           >
             {/* Mobile only — title + contact info inside card */}
             <div className="lg:hidden mb-8">
-              <h2 className="text-3xl font-bold text-brand-four mb-2">{title}</h2>
+              <h2 className="text-3xl font-bold text-brand-four mb-2">
+                {title}
+              </h2>
               <p className="text-sm text-brand-three mb-6">{subtitle}</p>
               <div className="space-y-4">
                 {[
@@ -99,7 +115,7 @@ export default function ContactSection() {
                     <div className="w-10 h-10 rounded-full bg-brand-four flex items-center justify-center flex-shrink-0">
                       <Icon className="w-5 h-5 text-brand-one" />
                     </div>
-                    <span className="text-sm text-brand-three" >{text}</span>
+                    <span className="text-sm text-brand-three">{text}</span>
                   </div>
                 ))}
               </div>
@@ -107,10 +123,15 @@ export default function ContactSection() {
 
             {/* Form */}
             <form onSubmit={handleSubmit}>
-              <h3 className="text-lg font-semibold text-brand-four mb-4">Send a Message</h3>
+              <h3 className="text-lg font-semibold text-brand-four mb-4">
+                Send a Message
+              </h3>
 
               <div className="mb-4">
-                <label htmlFor="name" className="block text-sm font-medium text-brand-three mb-2">
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-brand-three mb-2"
+                >
                   Name
                 </label>
                 <input
@@ -126,7 +147,10 @@ export default function ContactSection() {
               </div>
 
               <div className="mb-4">
-                <label htmlFor="email" className="block text-sm font-medium text-brand-three mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-brand-three mb-2"
+                >
                   Email
                 </label>
                 <input
@@ -142,7 +166,10 @@ export default function ContactSection() {
               </div>
 
               <div className="mb-6">
-                <label htmlFor="message" className="block text-sm font-medium text-brand-three mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-brand-three mb-2"
+                >
                   Message
                 </label>
                 <textarea
@@ -160,18 +187,16 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-brand-four text-brand-one font-semibold py-3.5 px-6 rounded-full hover:bg-primary/90 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full bg-brand-four text-brand-one font-semibold py-3.5 px-6 rounded-full hover:text-brand-four hover:bg-primary/90 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 <Send className="w-4 h-4" />
-                {isSubmitting ? 'Sending...' : 'Submit'}
+                {isSubmitting ? "Sending..." : "Submit"}
               </button>
             </form>
           </motion.div>
         </div>
 
         {/* 3D Spline image */}
-        
-
       </div>
 
       {/* Modals */}
@@ -188,7 +213,7 @@ export default function ContactSection() {
               initial={{ scale: 0.8, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 20 }}
-              transition={{ type: 'spring', duration: 0.5 }}
+              transition={{ type: "spring", duration: 0.5 }}
               onClick={(e) => e.stopPropagation()}
               className="bg-card rounded-3xl p-8 shadow-2xl border border-border max-w-sm w-full"
             >
@@ -196,12 +221,21 @@ export default function ContactSection() {
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  transition={{ type: 'spring', delay: 0.2, duration: 0.6, bounce: 0.5 }}
+                  transition={{
+                    type: "spring",
+                    delay: 0.2,
+                    duration: 0.6,
+                    bounce: 0.5,
+                  }}
                   className="relative w-32 h-32 mx-auto mb-6"
                 >
                   <Image
-                    src={modalState === 'success' ? '/assets/MessageSuccess.svg' : '/assets/MessageFail.svg'}
-                    alt={modalState === 'success' ? 'Success' : 'Error'}
+                    src={
+                      modalState === "success"
+                        ? "/assets/MessageSuccess.svg"
+                        : "/assets/MessageFail.svg"
+                    }
+                    alt={modalState === "success" ? "Success" : "Error"}
                     fill
                     className="object-contain"
                   />
@@ -213,7 +247,9 @@ export default function ContactSection() {
                   transition={{ delay: 0.7 }}
                   className="text-xl font-bold text-foreground mb-3"
                 >
-                  {modalState === 'success' ? 'Message Sent Successfully!' : 'Failed to send.'}
+                  {modalState === "success"
+                    ? "Message Sent Successfully!"
+                    : "Failed to send."}
                 </motion.h3>
 
                 <motion.p
@@ -222,9 +258,9 @@ export default function ContactSection() {
                   transition={{ delay: 0.8 }}
                   className="text-sm text-muted-foreground mb-6"
                 >
-                  {modalState === 'success'
+                  {modalState === "success"
                     ? "Thank you for reaching out. I'll get back to you as soon as possible."
-                    : 'Please check your internet connection or try refreshing the page.'}
+                    : "Please check your internet connection or try refreshing the page."}
                 </motion.p>
 
                 <motion.button
@@ -234,7 +270,7 @@ export default function ContactSection() {
                   onClick={() => setModalState(null)}
                   className="w-full bg-brand-four text-brand-one font-semibold py-3 px-6 rounded-full hover:bg-primary/90 transition-colors duration-300"
                 >
-                  {modalState === 'success' ? 'Back to Home' : 'Try Again'}
+                  {modalState === "success" ? "Back to Home" : "Try Again"}
                 </motion.button>
               </div>
             </motion.div>
@@ -242,5 +278,5 @@ export default function ContactSection() {
         )}
       </AnimatePresence>
     </section>
-  )
+  );
 }

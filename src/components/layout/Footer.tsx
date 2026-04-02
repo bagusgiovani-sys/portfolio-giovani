@@ -1,33 +1,32 @@
-'use client'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import { Github, Instagram, Linkedin } from 'lucide-react'
+"use client";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { Github, Instagram, Linkedin } from "lucide-react";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   const socialLinks = [
     {
-      name: 'GitHub',
+      name: "GitHub",
       icon: Github,
-      href: 'https://github.com/bagusgiovani-sys/',
+      href: "https://github.com/bagusgiovani-sys/",
     },
     {
-      name: 'Instagram',
+      name: "Instagram",
       icon: Instagram,
-      href: 'https://www.instagram.com/bagusgiovani/',
+      href: "https://www.instagram.com/bagusgiovani/",
     },
     {
-      name: 'LinkedIn',
+      name: "LinkedIn",
       icon: Linkedin,
-      href: 'https://www.linkedin.com/in/bagus-giovani-938627357/',
+      href: "https://www.linkedin.com/in/bagus-giovani-938627357/",
     },
-  ]
+  ];
 
   return (
     <footer className="bg-stone-900/90 backdrop-blur-md py-8 md:py-6 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
-
         {/* Mobile Layout - Stacked */}
         <div className="flex flex-col items-start gap-6 md:hidden">
           {/* Logo */}
@@ -39,13 +38,12 @@ export default function Footer() {
             className="flex items-center gap-3"
           >
             <Image
-              src="/assets/icons/your_logo.svg"
+              src="/assets/icons/Gio_Icon2.png"
               alt="Your Logo"
               width={32}
               height={32}
               className="object-contain"
             />
-            <span className="text-white font-semibold text-lg">Your Logo</span>
           </motion.div>
 
           <div className="text-left text-white/70 text-sm">
@@ -61,7 +59,7 @@ export default function Footer() {
             className="flex items-center gap-4"
           >
             {socialLinks.map((social, index) => {
-              const Icon = social.icon
+              const Icon = social.icon;
               return (
                 <motion.a
                   key={social.name}
@@ -71,15 +69,15 @@ export default function Footer() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.3 + (index * 0.1) }}
+                  transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 rounded-full bg-gray-700 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-colors"
+                  className="w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-colors"
                   aria-label={social.name}
                 >
                   <Icon className="w-5 h-5 text-white" />
                 </motion.a>
-              )
+              );
             })}
           </motion.div>
         </div>
@@ -94,7 +92,6 @@ export default function Footer() {
             transition={{ duration: 0.5 }}
             className="flex items-center gap-4"
           >
-            {/* Logo */}
             <div className="flex items-center gap-3">
               <Image
                 src="/assets/icons/Gio_Icon2.png"
@@ -104,8 +101,6 @@ export default function Footer() {
                 className="object-contain"
               />
             </div>
-
-            {/* Copyright */}
             <span className="text-white/70 text-sm ml-4">
               © {currentYear} Bagus Giovani. All rights reserved.
             </span>
@@ -120,7 +115,7 @@ export default function Footer() {
             className="flex items-center gap-4"
           >
             {socialLinks.map((social, index) => {
-              const Icon = social.icon
+              const Icon = social.icon;
               return (
                 <motion.a
                   key={social.name}
@@ -130,7 +125,7 @@ export default function Footer() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.3 + (index * 0.1) }}
+                  transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                   className="w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-colors"
@@ -138,12 +133,11 @@ export default function Footer() {
                 >
                   <Icon className="w-5 h-5 text-white" />
                 </motion.a>
-              )
+              );
             })}
           </motion.div>
         </div>
-
       </div>
     </footer>
-  )
+  );
 }

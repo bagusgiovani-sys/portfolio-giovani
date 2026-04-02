@@ -82,7 +82,7 @@ export default function Navbar() {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 + i * 0.05 }}
-                    className="text-white/90 hover:text-white text-sm font-medium transition-colors relative group cursor-pointer"
+                    className="text-white/90 hover:text-white hover:bg-brand-three text-sm font-medium transition-colors relative group cursor-pointer"
                   >
                     {link.label}
                     {/* Underline hover effect */}

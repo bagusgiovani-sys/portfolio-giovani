@@ -53,7 +53,7 @@ function FeaturedCard({ project }: { project: FeaturedProject }) {
       <motion.div
         animate={{ scale: hovered ? 1.06 : 1 }}
         transition={{ duration: 0.45, ease: 'easeOut' }}
-        className="relative w-[320px] md:w-[400px] h-[120px] md:h-[270px] scale-100"
+        className="relative w-[300px] md:w-[400px] h-[120px] md:h-[270px] scale-100"
       >
         <Image
           src={project.image}
@@ -154,7 +154,7 @@ function OtherCard({ item, index, position, isHovered, onHover, onLeave }: Other
             src={item.image}
             alt={item.title}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-125"
+            className="object-cover transition-transform duration-300 scale-110 group-hover:scale-135"
             onError={() => setImageError(true)}
           />
         ) : (

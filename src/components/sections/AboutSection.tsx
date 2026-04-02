@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { Mail, Star } from 'lucide-react'
@@ -10,12 +10,12 @@ const LENS_SIZE = 140
 const ZOOM = 2.2
 
 const PINS = [
-  { name: 'Singapore', src: '/assets/images/singapore.png', mobile: 'top-[48%] right-[36%]', desktop: 'top-[48%] right-[22%]', delay: 0 },
-  { name: 'India', src: '/assets/images/india.png', mobile: 'top-[41%] right-[43%]', desktop: 'top-[43%] right-[28%]', delay: 0.4 },
-  { name: 'Taiwan', src: '/assets/images/taiwan.png', mobile: 'top-[38%] right-[26%]', desktop: 'top-[38%] right-[13%]', delay: 0.8 },
-  { name: 'Vietnam', src: '/assets/images/vietnam.png', mobile: 'bottom-[55%] right-[35%]', desktop: 'bottom-[68%] right-[16%]', delay: 1.2 },
-  { name: 'United Arab Emirates', src: '/assets/images/UAE.svg', mobile: 'top-[40%] right-[55%]', desktop: 'top-[40%] right-[40%]', delay: 1.6 },
-  { name: 'Brazil', src: '/assets/images/Brazil.svg', mobile: 'bottom-[45%] left-[12%]', desktop: 'bottom-[45%] left-[28%]', delay: 2.0 },
+  { name: 'Singapore', src: '/assets/images/singapore.png', mobile: 'top-[48%] right-[22%]', desktop: 'top-[48%] right-[22%]', delay: 0 },
+  { name: 'India', src: '/assets/images/india.png', mobile: 'top-[41%] right-[28%]', desktop: 'top-[43%] right-[28%]', delay: 0.4 },
+  { name: 'Taiwan', src: '/assets/images/taiwan.png', mobile: 'top-[41%] right-[13%]', desktop: 'top-[38%] right-[13%]', delay: 0.8 },
+  { name: 'Vietnam', src: '/assets/images/vietnam.png', mobile: 'bottom-[55%] right-[22%]', desktop: 'bottom-[55%] right-[22%]', delay: 1.2 },
+  { name: 'United Arab Emirates', src: '/assets/images/UAE.svg', mobile: 'top-[42%] right-[38%]', desktop: 'top-[40%] right-[40%]', delay: 1.6 },
+  { name: 'Brazil', src: '/assets/images/Brazil.svg', mobile: 'bottom-[46%] left-[28%]', desktop: 'bottom-[45%] left-[28%]', delay: 2.0 },
 ]
 
 function MapPin({ name, src, mobile, desktop, pulse, delay }: {
@@ -66,8 +66,9 @@ function MapPin({ name, src, mobile, desktop, pulse, delay }: {
 function MapCardScene({ stats, pulse }: { stats: typeof aboutData.stats; pulse: boolean }) {
   return (
     <>
-      <div className="absolute inset-[-80] pointer-events-none">
-        <Image src="/assets/images/worldmap1.jpg" alt="World Map" fill className="object-contain" />
+      {/* Mobile: object-cover + inset-0 to fill card. Desktop: original object-contain + inset-[-80px] */}
+      <div className="absolute inset-0 lg:inset-[-80px] pointer-events-none">
+        <Image src="/assets/images/worldmap1.jpg" alt="World Map" fill className="object-cover lg:object-contain" />
       </div>
 
       {PINS.map((pin) => (
@@ -99,6 +100,83 @@ function MapCardScene({ stats, pulse }: { stats: typeof aboutData.stats; pulse: 
         </p>
       </div>
     </>
+  )
+}
+
+function DraggableTicker({ items, reverse }: { items: string[]; reverse: boolean }) {
+  const trackRef = useRef<HTMLDivElement>(null)
+  const offsetRef = useRef(0)
+  const dragStartRef = useRef<number | null>(null)
+  const dragOffsetRef = useRef(0)
+  const animFrameRef = useRef<number>(0)
+  const isDragging = useRef(false)
+  const speedRef = useRef(reverse ? -0.4 : 0.4)
+  const [, forceUpdate] = useState(0)
+
+  // auto-scroll
+  useEffect(() => {
+    const track = trackRef.current
+    if (!track) return
+    const halfWidth = track.scrollWidth / 2
+
+    const tick = () => {
+      if (!isDragging.current) {
+        offsetRef.current -= speedRef.current
+        if (Math.abs(offsetRef.current) >= halfWidth) offsetRef.current = 0
+        if (track) track.style.transform = `translateX(${offsetRef.current}px)`
+      }
+      animFrameRef.current = requestAnimationFrame(tick)
+    }
+    animFrameRef.current = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(animFrameRef.current)
+  }, [])
+
+  const onDragStart = (clientX: number) => {
+    isDragging.current = true
+    dragStartRef.current = clientX
+    dragOffsetRef.current = offsetRef.current
+  }
+
+  const onDragMove = (clientX: number) => {
+    if (!isDragging.current || dragStartRef.current === null) return
+    const track = trackRef.current
+    if (!track) return
+    const diff = clientX - dragStartRef.current
+    const halfWidth = track.scrollWidth / 2
+    let newOffset = dragOffsetRef.current + diff
+    // wrap
+    if (newOffset > 0) newOffset -= halfWidth
+    if (newOffset < -halfWidth) newOffset += halfWidth
+    offsetRef.current = newOffset
+    track.style.transform = `translateX(${newOffset}px)`
+  }
+
+  const onDragEnd = () => {
+    isDragging.current = false
+    dragStartRef.current = null
+  }
+
+  return (
+    <div
+      className="relative overflow-hidden mb-3 last:mb-0 cursor-grab active:cursor-grabbing touch-pan-y"
+      onMouseDown={(e) => onDragStart(e.clientX)}
+      onMouseMove={(e) => onDragMove(e.clientX)}
+      onMouseUp={onDragEnd}
+      onMouseLeave={onDragEnd}
+      onTouchStart={(e) => onDragStart(e.touches[0].clientX)}
+      onTouchMove={(e) => { e.stopPropagation(); onDragMove(e.touches[0].clientX) }}
+      onTouchEnd={onDragEnd}
+    >
+      <div className="absolute left-0 top-0 bottom-0 w-4 bg-gradient-to-r from-brand-four to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-4 bg-gradient-to-l from-brand-four to-transparent z-10 pointer-events-none" />
+      <div ref={trackRef} className="flex gap-3 py-1 whitespace-nowrap will-change-transform">
+        {[...items, ...items].map((badge, i) => (
+          <span key={i} className="inline-flex items-center bg-brand-three font-semibold px-5 py-2.5 rounded-full text-sm text-neutral-900 select-none">
+            {badge}
+          </span>
+        ))}
+      </div>
+    </div>
   )
 }
 
@@ -166,19 +244,29 @@ export default function AboutSection() {
             <p className="text-gray-900 text-[14px] mb-8 leading-relaxed">
               Delivering excellence with innovative solutions and seamless execution.
             </p>
-            {[row1Items, row2Items, row3Items].map((items, rowIndex) => (
-              <div key={rowIndex} className="relative overflow-hidden mb-3 last:mb-0">
-                <div className="absolute left-0 top-0 bottom-0 w-4 bg-gradient-to-r from-brand-four to-transparent z-10 pointer-events-none" />
-                <div className="absolute right-0 top-0 bottom-0 w-4 bg-gradient-to-l from-brand-four to-transparent z-10 pointer-events-none" />
-                <div className={`flex gap-3 py-1 whitespace-nowrap ${rowIndex % 2 === 0 ? 'animate-ticker-pc' : 'animate-ticker-reverse'}`}>
-                  {items.map((badge, i) => (
-                    <span key={i} className="inline-flex items-center bg-brand-three font-semibold px-5 py-2.5 rounded-full text-sm text-neutral-900">
-                      {badge}
-                    </span>
-                  ))}
+            {/* Mobile: draggable ticker rows */}
+            <div className="lg:hidden">
+              {[whyChooseMeBadges.row1, whyChooseMeBadges.row2, whyChooseMeBadges.row3].map((row, rowIndex) => (
+                <DraggableTicker key={rowIndex} items={row} reverse={rowIndex % 2 !== 0} />
+              ))}
+            </div>
+
+            {/* Desktop: original CSS animation */}
+            <div className="hidden lg:block">
+              {[row1Items, row2Items, row3Items].map((items, rowIndex) => (
+                <div key={rowIndex} className="relative overflow-hidden mb-3 last:mb-0">
+                  <div className="absolute left-0 top-0 bottom-0 w-4 bg-gradient-to-r from-brand-four to-transparent z-10 pointer-events-none" />
+                  <div className="absolute right-0 top-0 bottom-0 w-4 bg-gradient-to-l from-brand-four to-transparent z-10 pointer-events-none" />
+                  <div className={`flex gap-3 py-1 whitespace-nowrap ${rowIndex % 2 === 0 ? 'animate-ticker-pc' : 'animate-ticker-reverse'}`}>
+                    {items.map((badge, i) => (
+                      <span key={i} className="inline-flex items-center bg-brand-three font-semibold px-5 py-2.5 rounded-full text-sm text-neutral-900">
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </motion.div>
 
           {/* Tech Stack */}
@@ -238,17 +326,19 @@ export default function AboutSection() {
               </h3>
               <div className="flex gap-4 justify-center">
                 {projectPreviews.map((project, index) => (
-                  <motion.div
+                  <motion.button
                     key={project.id}
+                    onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.05, y: -5 }}
+                    whileTap={{ scale: 0.95 }}
                     transition={{ duration: 0.2, delay: 0.1 + index * 0.1 }}
-                    className="relative w-25 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden shadow-lg"
+                    className="relative w-25 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden shadow-lg cursor-pointer"
                   >
                     <Image src={project.image} alt={`Project ${project.id}`} fill className="object-cover" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }} />
-                  </motion.div>
+                  </motion.button>
                 ))}
               </div>
             </div>
@@ -267,7 +357,7 @@ export default function AboutSection() {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-brand-four to-brand-three" />
             <div className="absolute inset-0">
-              <Image src="/assets/images/Giovani9.svg" alt="Bagus Giovani" fill className="object-cover object-center z-40" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }} />
+              <Image src="/assets/images/Giovani9.svg" alt="Bagus Giovani" fill className="object-cover object-center z-40 pointer-events-none" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }} />
             </div>
             <div className="absolute inset-0 flex items-center justify-center">
               <h3 className="text-[65px] md:text-7xl lg:text-8xl font-black text-gray-900 text-center">BAGUS GIOVANI</h3>
@@ -279,7 +369,10 @@ export default function AboutSection() {
               transition={{ duration: 0.5, delay: 0.8 }}
               className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50"
             >
-              <button className="bg-white hover:bg-brand-three text-black font-semibold px-8 py-3 rounded-full shadow-2xl flex items-center gap-2 transition-all hover:scale-105">
+              <button
+                onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-white hover:bg-brand-three text-black font-semibold px-8 py-3 rounded-full shadow-2xl flex items-center gap-2 transition-all hover:scale-105 cursor-pointer"
+              >
                 <Mail className="w-5 h-5" />
                 Hire Me
               </button>
@@ -303,9 +396,6 @@ export default function AboutSection() {
             style={{ cursor: 'none', touchAction: 'none' }}
           >
             <MapCardScene stats={stats} pulse />
-
-            {/* Right edge fade — mobile only */}
-            <div className="absolute top-0 right-0 bottom-0 w-16 bg-gradient-to-l from-brand-four/80 to-transparent pointer-events-none z-20 md:hidden" />
 
             {/* Zoom lens */}
             {isHovering && (
