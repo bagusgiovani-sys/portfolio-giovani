@@ -20,7 +20,7 @@ export default function Footer() {
     {
       name: 'LinkedIn',
       icon: Linkedin,
-      href: 'https://linkedin.com/in/yourusername',
+      href: 'https://www.linkedin.com/in/bagus-giovani-938627357/',
     },
   ]
 
