@@ -40,14 +40,14 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.15 }}
           className="font-black text-white uppercase text-center w-full"
-          style={{ fontSize: 'clamp(1rem, 8.5vw, 6rem)', letterSpacing: '0.02em' }}
+          style={{ fontSize: 'clamp(1rem, 8.5vw, 5.2rem)', letterSpacing: '0.02em' }}
         >
           {heroData.name}
         </motion.h1>
       </div>
 
       {/* Photo + floating cards */}
-      <div className="relative h-[470px] md:h-[620px] md:mt-[-195px] w-full">
+      <div className="relative h-[470px] md:h-[610px] md:mt-[-195px] w-full">
 
         {/* Profile Image */}
         {!imageError && (
@@ -77,7 +77,7 @@ export default function HeroSection() {
             y: { delay: 1, duration: 7, repeat: Infinity, ease: 'easeInOut' },
           }}
           style={{ willChange: 'transform' }}
-          className="absolute top-5 lg:top-60 left-17 lg:left-[28%] lg:scale-130"
+          className="absolute top-7 md:top-60 left-17 md:left-[28%] lg:scale-130"
         >
           <GlassCard className="px-3 py-3">
             <p className="text-[24px] mt-0.5 font-semibold text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.8)]">
@@ -97,7 +97,7 @@ export default function HeroSection() {
           </GlassCard>
         </motion.div>
 
-        {/* 50+ Clients card */}
+        {/* 15+ Clients card */}
         <motion.div
           initial={{ opacity: 0, scale: 0.85, rotate: 4 }}
           animate={{

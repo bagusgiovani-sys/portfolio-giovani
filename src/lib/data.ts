@@ -4,14 +4,16 @@
 // To update your portfolio, just edit the values here.
 // ============================================================
 
+import { sub } from "framer-motion/client"
+
 // ─── Hero ────────────────────────────────────────────────────
 
 export const heroData = {
   name: 'Bagus Giovani',
   rating: {
-    score: '4.7',
-    label: 'Many Client Trust',
-    sublabel: 'with me',
+    score: '5.0',
+    label: 'Always Aiming',
+    sublabel: 'for Max Quality', 
   },
   stats: {
     clients: '15+',
@@ -20,7 +22,7 @@ export const heroData = {
   badges: ['Frontend Developer', 'React Expert'],
   ticker: [
     'TypeScript Pro',
-    ' React Expert',
+    'React Expert',
     'Product Designer',
     'UI/UX Focused',
   ],
@@ -208,7 +210,7 @@ export const projectsData = {
       id: 4,
       title: 'Booky App',
       category: 'Admin & User Web App',
-      year: '2023',
+      year: '2026',
       image: '/assets/Booky.png',
       link: 'https://booky-app-by-gio.vercel.app/',
     },

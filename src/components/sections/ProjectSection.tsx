@@ -45,7 +45,7 @@ function FeaturedCard({ project }: { project: FeaturedProject }) {
       href={project.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="relative flex-2 w-[190px] md:w-[380px] h-[190px] md:h-[360px] block overflow-hidden"
+      className="relative flex-2 w-[170px] md:w-[380px] h-[260px] md:h-[360px] overflow-hidden"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -53,7 +53,7 @@ function FeaturedCard({ project }: { project: FeaturedProject }) {
       <motion.div
         animate={{ scale: hovered ? 1.06 : 1 }}
         transition={{ duration: 0.45, ease: 'easeOut' }}
-        className="relative w-[300px] md:w-[400px] h-[120px] md:h-[270px] scale-100"
+        className="relative w-[175px] md:w-[400px] h-[260px] md:h-[270px] scale-115 md:scale-100"
       >
         <Image
           src={project.image}
@@ -84,7 +84,7 @@ function FeaturedCard({ project }: { project: FeaturedProject }) {
       {/* Bottom overlay: title + badges */}
       <div className="absolute bottom-0 left-0 right-0 z-10 p-4 bg-gradient-to-t from-black/85 via-black/50 to-transparent">
         <div className="flex items-center gap-2 mb-2.5">
-          <h3 className="text-white font-bold text-xs md:text-[14px] leading-tight">{project.title}</h3>
+          <h3 className="text-white font-bold text-[9px] md:text-[14px] leading-tight">{project.title}</h3>
           <ExternalLink className="w-3.5 h-3.5 text-white/70 shrink-0" />
         </div>
         <div className="flex flex-wrap gap-1.5">
@@ -124,12 +124,13 @@ interface OtherCardProps {
 
 function OtherCard({ item, index, position, isHovered, onHover, onLeave }: OtherCardProps) {
   const [imageError, setImageError] = useState(false)
+  const [imgHovered, setImgHovered] = useState(false)
   const isActive = isHovered || position === 'center'
 
   return (
     <motion.div
-      onHoverStart={onHover}
-      onHoverEnd={onLeave}
+      onHoverStart={() => { onHover(); setImgHovered(true) }}
+      onHoverEnd={() => { onLeave(); setImgHovered(false) }}
       animate={{
         scale: isActive ? 1 : 0.82,
         opacity: isActive ? 1 : 0.45,
@@ -146,23 +147,30 @@ function OtherCard({ item, index, position, isHovered, onHover, onLeave }: Other
           }
           : { duration: 0.3 }
       }
-      className="bg-brand-four border border-border rounded-2xl overflow-hidden shadow-xl cursor-pointer group w-full"
+      className="bg-brand-four border border-border rounded-2xl overflow-hidden shadow-xl cursor-pointer w-full"
     >
       <div className="relative aspect-video w-full overflow-hidden">
         {!imageError ? (
-          <Image
-            src={item.image}
-            alt={item.title}
-            fill
-            className="object-cover transition-transform duration-300 scale-110 group-hover:scale-135"
-            onError={() => setImageError(true)}
-          />
+          // Zoom lives on this wrapper — <Image> is never remounted so the GIF never restarts
+          <motion.div
+            className="absolute inset-0"
+            animate={{ scale: imgHovered ? 1.15 : 1.1 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+          >
+            <Image
+              src={item.image}
+              alt={item.title}
+              fill
+              className="object-cover"
+              onError={() => setImageError(true)}
+            />
+          </motion.div>
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-muted">
             <p className="text-3xl text-muted-foreground">Project Image</p>
           </div>
         )}
-        <div className="absolute top-3 left-3 right-3 flex justify-between">
+        <div className="absolute top-3 left-3 right-3 flex justify-between z-10">
           <span className="px-2 py-1 bg-white/90 rounded-full text-[10px] font-medium text-foreground border border-border shadow-sm">
             {item.category}
           </span>

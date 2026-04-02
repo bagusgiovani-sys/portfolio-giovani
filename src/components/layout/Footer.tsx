@@ -66,16 +66,16 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  initial={{ opacity: 0, scale: 0.8 }}
+                  initial={{ opacity: 0, scale: 1 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
-                  whileHover={{ scale: 1.1, y: -3 }}
+                  whileHover={{ scale: 1.2, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                   className="w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-colors"
                   aria-label={social.name}
                 >
-                  <Icon className="w-5 h-5 text-white" />
+                  <Icon className="w-6 h-6 text-white" />
                 </motion.a>
               );
             })}
@@ -122,16 +122,16 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  initial={{ opacity: 0, scale: 0.8 }}
+                  initial={{ opacity: 0, scale: 1.2 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
-                  whileHover={{ scale: 1.1, y: -3 }}
+                  transition={{ duration: 0.3, delay: 0.1 + index * 0.1 }}
+                  whileHover={{ scale: 1.4, y: -3 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-colors"
+                  className="w-15 h-15 rounded-lg bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-colors"
                   aria-label={social.name}
                 >
-                  <Icon className="w-5 h-5 text-white" />
+                  <Icon className="w-7 h-7 text-white" />
                 </motion.a>
               );
             })}

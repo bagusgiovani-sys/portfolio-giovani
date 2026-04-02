@@ -110,7 +110,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
               onClick={() => setIsOpen((prev) => !prev)}
-              className="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
+              className="lg:hidden text-brand-three p-2 rounded-lg hover:bg-brand-four/10 transition-colors"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -129,7 +129,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-40 bg-brand-four/50 backdrop-blur-sm md:hidden"
             />
 
             {/* Drawer - Same color as scrolled navbar */}
@@ -138,11 +138,11 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="fixed top-0 right-0 bottom-0 z-50 w-72 bg-gray-900/90 shadow-2xl lg:hidden flex flex-col"
+              className="fixed top-0 right-0 bottom-0 z-69 w-62 bg-brand-four/90 shadow-2xl md:hidden flex flex-col"
             >
               {/* Drawer header */}
               <div className="flex items-center justify-between px-6 h-16 border-b border-white/10">
-                <span className="text-white font-semibold text-lg">Menu</span>
+                <span className="text-brand-one font-semibold text-lg">Menu</span>
                 <button
                   onClick={() => setIsOpen(false)}
                   className="text-white/70 hover:text-white p-1 transition-colors"
@@ -161,7 +161,7 @@ export default function Navbar() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}
-                    className="text-white/90 hover:text-white hover:bg-white/10 text-left px-4 py-3 rounded-xl text-sm font-medium transition-all cursor-pointer"
+                    className="text-brand-one/90 hover:text-white hover:bg-white/10 text-left px-4 py-3 rounded-xl text-sm font-medium transition-all cursor-pointer"
                   >
                     {link.label}
                   </motion.button>
