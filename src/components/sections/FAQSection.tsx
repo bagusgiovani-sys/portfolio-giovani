@@ -49,7 +49,9 @@ export default function FAQSection() {
                 <p className="text-sm text-black mb-4">
                   Have more questions? Send me a message
                 </p>
-                <button className="w-full bg-brand-two text-white font-thin py-3 px-6 rounded-full hover:text-brand-four hover:bg-primary/90 transition-colors duration-300">
+                <button
+                onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+                className="w-full bg-brand-two text-white font-thin py-3 px-6 rounded-full hover:text-brand-four hover:bg-primary/90 transition-colors duration-300">
                   {cta}
                 </button>
               </div>

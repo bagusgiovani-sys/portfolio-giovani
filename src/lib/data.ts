@@ -21,9 +21,9 @@ export const heroData = {
   },
   badges: ['Frontend Developer', 'React Expert'],
   ticker: [
-    'TypeScript Pro',
+    'Product Engineer',
     'React Expert',
-    'Product Designer',
+    'Product Engineer',
     'UI/UX Focused',
   ],
   clientAvatars: [
@@ -46,8 +46,8 @@ export const aboutData = {
   bio: {
     greeting: "Hi, I'm Bagus Giovani 👋",
     highlight:
-      'Build pixel-perfect UIs with real design sense—not AI guesswork.',
-    body: 'Utilizing AI tools to move fast, manually review and refine for accuracy, performance, and clean architecture. No vibe coding, just production-ready results.',
+      'Ship Real Products Fast in High Quality - Build pixel-perfect UIs with real design sense—NOT AI guesswork.',
+    body: 'Utilizing AI tools to move fast, manually review and refine for accuracy, performance, and clean architecture. No vibe coding, just production-ready results from design to deployment.',
   },
   techIcons: [
     { name: 'TypeScript', icon: '/assets/icons/ts_logo.svg' },
