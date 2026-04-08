@@ -478,16 +478,16 @@ export default function AboutSection() {
           >
             <div className="absolute inset-0">
               <Image
-                src="/assets/images/CardBackground/officebg.svg"
-                alt="Office background"
+                src="/assets/images/CardBackground/Gio_project_bg.png"
+                alt="Gio background"
                 fill
-                className="object-contain"
+                className="object-contain scale-175"
                 onError={(e) => {
                   (e.currentTarget as HTMLImageElement).style.display = "none";
                 }}
               />
             </div>
-            <div className="absolute inset-0 bg-black/60" />
+            <div className="absolute inset-0 bg-black/20" />
             <div className="relative z-10 h-full flex flex-col items-center justify-center my-10 p-6">
               <h3 className="text-4xl md:text-4xl font-bold text-white mb-25 text-center">
                 2+ Years
