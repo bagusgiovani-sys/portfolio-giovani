@@ -77,18 +77,53 @@ export const aboutData = {
 
 // ─── Why Choose Me ───────────────────────────────────────────
 
+export interface ComparisonItem {
+  skill: string
+  detail: string
+  me: boolean
+  others: boolean
+}
+
 export const whyMeData = {
   title: 'Why Choose Me',
   subtitle: 'Delivering excellence with innovative solutions and seamless execution.',
   comparison: [
-    { skill: 'React Expert', me: true, others: false },
-    { skill: 'Perfect Pixel', me: true, others: false },
-    { skill: 'TypeScript Proficiency', me: true, others: false },
-    { skill: 'Clean, Maintainable Code', me: true, others: false },
-    { skill: 'Performance Optimization', me: true, others: false },
-    { skill: 'Responsive Website', me: true, others: false },
-    { skill: 'UI Design Proficiency (Figma)', me: true, others: false },
-  ],
+    {
+      skill: 'React Expert',
+      detail: 'Deep mastery of the React ecosystem — hooks, context, performance patterns, Zustand, TanStack Query, and component architecture that scales.',
+      me: true, others: false,
+    },
+    {
+      skill: 'Perfect Pixel',
+      detail: 'Translating Figma into living UI with sub-pixel precision. Every spacing, shadow, and transition matches — or exceeds — the original design.',
+      me: true, others: false,
+    },
+    {
+      skill: 'TypeScript Proficiency',
+      detail: 'Writing strictly typed, self-documenting code. Generics, utility types, discriminated unions — type safety as a first-class feature.',
+      me: true, others: false,
+    },
+    {
+      skill: 'Clean, Maintainable Code',
+      detail: 'Atomic design, feature-based folder structure, and SOLID principles. Code that new teammates can read in minutes, not days.',
+      me: true, others: false,
+    },
+    {
+      skill: 'Performance Optimization',
+      detail: 'Lazy loading, code splitting, memoization, and bundle analysis. Real Lighthouse scores — not just theoretical knowledge.',
+      me: true, others: false,
+    },
+    {
+      skill: 'Responsive Website',
+      detail: 'Mobile-first layouts that feel native on every breakpoint. Touch gestures, viewport units, fluid typography — no breakpoint left behind.',
+      me: true, others: false,
+    },
+    {
+      skill: 'UI Design Proficiency (Figma)',
+      detail: 'Figma slicing near perfection. Auto-layout, component variants, design tokens — bridging design and dev with zero lost-in-translation.',
+      me: true, others: false,
+    },
+  ] satisfies ComparisonItem[],
 }
 
 // ─── Skills ──────────────────────────────────────────────────

@@ -41,7 +41,7 @@
 - [x] Remove `const [, forceUpdate] = useState(0)` from `AboutSection.tsx:205` (`fixes.md` #7) — done 2026-05-03
 - [x] Remove `#__next` CSS block from `globals.css` (`fixes.md` #8) — done 2026-05-03
 - [x] Consolidate `contactData.socials` — real URLs added, Footer reads from data.ts (`fixes.md` #5, #16) — done 2026-05-03
-- [ ] Wire `WhyMeSection.tsx` to use `whyMeData` from data.ts instead of local array (`fixes.md` #14)
+- [x] Wire `WhyMeSection.tsx` to use `whyMeData` from data.ts — added `detail` + `ComparisonItem` interface, removed local array (`fixes.md` #14) — done 2026-05-03
 - [x] Fix `SplashScreen.tsx` to use `heroData.name` + `heroData.badges[0]` (`fixes.md` #15) — done 2026-05-03
 - [x] Remove duplicate ticker item in `heroData.ticker` — replaced with 'Next.js Developer' (`fixes.md` #17) — done 2026-05-03
 

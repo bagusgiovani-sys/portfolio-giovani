@@ -1,7 +1,8 @@
 'use client'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Check, X, ChevronUp } from 'lucide-react'
+import { Check, X } from 'lucide-react'
 import { useState } from 'react'
+import { whyMeData } from '@/lib/data'
 
 function CurvyLines() {
   return (
@@ -35,37 +36,6 @@ function CurvyLines() {
   )
 }
 
-const comparisons = [
-  {
-    skill: 'React Expert',
-    detail: 'Deep mastery of the React ecosystem — hooks, context, performance patterns, Zustand, TanStack Query, and component architecture that scales.',
-  },
-  {
-    skill: 'Perfect Pixel',
-    detail: 'Translating Figma into living UI with sub-pixel precision. Every spacing, shadow, and transition matches — or exceeds — the original design.',
-  },
-  {
-    skill: 'TypeScript Proficiency',
-    detail: 'Writing strictly typed, self-documenting code. Generics, utility types, discriminated unions — type safety as a first-class feature.',
-  },
-  {
-    skill: 'Clean, Maintainable Code',
-    detail: 'Atomic design, feature-based folder structure, and SOLID principles. Code that new teammates can read in minutes, not days.',
-  },
-  {
-    skill: 'Performance Optimization',
-    detail: 'Lazy loading, code splitting, memoization, and bundle analysis. Real Lighthouse scores — not just theoretical knowledge.',
-  },
-  {
-    skill: 'Responsive Website',
-    detail: 'Mobile-first layouts that feel native on every breakpoint. Touch gestures, viewport units, fluid typography — no breakpoint left behind.',
-  },
-  {
-    skill: 'UI Design Proficiency (Figma)',
-    detail: 'Figma slicing near perfection. Auto-layout, component variants, design tokens — bridging design and dev with zero lost-in-translation.',
-  },
-]
-
 export default function WhyMeSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
@@ -85,7 +55,7 @@ export default function WhyMeSection() {
           transition={{ duration: 0.5 }}
           className="text-3xl md:text-4xl font-bold text-foreground mb-8 text-center"
         >
-          Why Choose Me
+          {whyMeData.title}
         </motion.h2>
 
         <motion.div
@@ -108,7 +78,7 @@ export default function WhyMeSection() {
 
           {/* Rows */}
           <div className="divide-y divide-border">
-            {comparisons.map((item, index) => {
+            {whyMeData.comparison.map((item, index) => {
               const isExpanded = expandedIndex === index
               const isHovered = hoveredIndex === index
 
