@@ -235,10 +235,3 @@ section {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .animate-ticker-mobile,
-  .animate-ticker-pc,
-  .animate-ticker-reverse {
-    animation: none;
-  }
-}
