@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Smartphone, Mail, MapPin, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import Image from "next/image";
 import { contactData } from "@/lib/data";
+import ContactInfoList from "@/components/ui/ContactInfoList";
 
 interface FormData {
   name: string;
@@ -30,7 +31,7 @@ export default function ContactSection() {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("https://formspree.io/f/mzdkarrw", {
+      const res = await fetch(process.env.NEXT_PUBLIC_FORMSPREE_URL!, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -75,20 +76,7 @@ export default function ContactSection() {
             </h2>
             <p className="text-sm text-muted-foreground mb-10">{subtitle}</p>
 
-            <div className="space-y-5">
-              {[
-                { icon: Smartphone, text: phone },
-                { icon: Mail, text: email },
-                { icon: MapPin, text: location },
-              ].map(({ icon: Icon, text }) => (
-                <div key={text} className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-5 h-5 text-brand-one" />
-                  </div>
-                  <span className="text-sm text-gray-700">{text}</span>
-                </div>
-              ))}
-            </div>
+            <ContactInfoList phone={phone} email={email} location={location} variant="desktop" />
           </motion.div>
 
           {/* Right — Card with form (on mobile: full card including info) */}
@@ -105,20 +93,7 @@ export default function ContactSection() {
                 {title}
               </h2>
               <p className="text-sm text-brand-three mb-6">{subtitle}</p>
-              <div className="space-y-4">
-                {[
-                  { icon: Smartphone, text: phone },
-                  { icon: Mail, text: email },
-                  { icon: MapPin, text: location },
-                ].map(({ icon: Icon, text }) => (
-                  <div key={text} className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-brand-four flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-5 h-5 text-brand-one" />
-                    </div>
-                    <span className="text-sm text-brand-three">{text}</span>
-                  </div>
-                ))}
-              </div>
+              <ContactInfoList phone={phone} email={email} location={location} variant="mobile" />
             </div>
 
             {/* Form */}

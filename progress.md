@@ -51,8 +51,8 @@
 - [x] Dark mode — kept `@custom-variant dark` (used by Skeleton `dark:` utility); removed dead color vars from dark `@media` block, kept shadow overrides (`fixes.md` #21) — done 2026-05-04
 - [x] Extract `<CardCarousel>` — generic render-prop carousel; SkillSection and ProjectSection now ~60% smaller (`fixes.md` #12) — done 2026-05-04
 - [x] Move `NavButton` to `src/components/ui/NavButton.tsx` (`fixes.md` #11) — done 2026-05-04
-- [ ] Extract `<ContactInfoList>` from ContactSection (`fixes.md` #13)
-- [ ] Move Formspree endpoint to `.env.local` as `NEXT_PUBLIC_FORMSPREE_URL`
+- [x] Extract `<ContactInfoList>` from ContactSection (`fixes.md` #13) — `src/components/ui/ContactInfoList.tsx` created 2026-05-03
+- [x] Move Formspree endpoint to `.env.local` as `NEXT_PUBLIC_FORMSPREE_URL` — done 2026-05-03; `.env.local` added to `.gitignore`
 
 ### P3 — Performance & accessibility
 - [x] Debounce resize listener in `HeroSection.tsx` (`fixes.md` #22) — done 2026-05-03
@@ -76,4 +76,4 @@
 
 ---
 
-*Last updated: 2026-05-03 (P3 complete)*
+*Last updated: 2026-05-03 (P2 + P3 complete)*
