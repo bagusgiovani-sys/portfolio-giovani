@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { Star, Check } from 'lucide-react'
@@ -11,11 +11,20 @@ export default function HeroSection() {
   const [isLg, setIsLg] = useState(false)
   const [imageError, setImageError] = useState(false)
 
+  const resizeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
   useEffect(() => {
     const check = () => setIsLg(window.innerWidth >= 1024)
+    const debouncedCheck = () => {
+      if (resizeTimer.current) clearTimeout(resizeTimer.current)
+      resizeTimer.current = setTimeout(check, 150)
+    }
     check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
+    window.addEventListener('resize', debouncedCheck)
+    return () => {
+      window.removeEventListener('resize', debouncedCheck)
+      if (resizeTimer.current) clearTimeout(resizeTimer.current)
+    }
   }, [])
 
   return (
@@ -52,6 +61,7 @@ export default function HeroSection() {
         {/* Profile Image */}
         {!imageError && (
           <div className="absolute inset-x-0 bottom-16 md:bottom-[-200] pl-10 z-38 flex justify-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/images/Giovani9.svg"
               alt="Bagus Giovani"
@@ -83,9 +93,9 @@ export default function HeroSection() {
             <p className="text-[24px] mt-0.5 font-semibold text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.8)]">
               {heroData.rating.score}
             </p>
-            <div className="flex gap-1.5 my-1.5">
+            <div className="flex gap-1.5 my-1.5" aria-label={`${heroData.rating.score} out of 5 stars`}>
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4.5 h-4.5 fill-amber-500 text-amber-500" />
+                <Star key={i} className="w-4.5 h-4.5 fill-amber-500 text-amber-500" aria-hidden="true" />
               ))}
             </div>
             <p className="text-[11px] font-thin text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.8)] leading-relaxed">
