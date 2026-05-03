@@ -4,8 +4,6 @@
 // To update your portfolio, just edit the values here.
 // ============================================================
 
-import { sub } from "framer-motion/client"
-
 // ─── Hero ────────────────────────────────────────────────────
 
 export const heroData = {
@@ -220,7 +218,7 @@ export const projectsData = {
       category: 'Landing Page',
       year: '2025',
       image: '/assets/images/CardBackground/image-5.svg',
-      link: 'https://example.com/project-5',
+      link: '#',
     },
     {
       id: 6,
@@ -228,7 +226,7 @@ export const projectsData = {
       category: 'Food Commerce Web App',
       year: '2026',
       image: '/assets/images/CardBackground/image-6.svg',
-      link: 'https://example.com/project-6',
+      link: '#',
     },
   ] satisfies Project[],
 }

@@ -31,13 +31,13 @@
 ## To-Do List (prioritized)
 
 ### P0 — Broken in production right now
-- [ ] **Fix broken testimonial icons** — create `/public/assets/icons/feedback/` with peer.svg, mentor.svg, user.svg (`fixes.md` #1)
-- [ ] **Fix .gradient-primary / .text-gradient CSS** — add missing `--color-primary-700`/`--color-primary-500` tokens (`fixes.md` #2)
-- [ ] **Fix corrupted Tailwind class** — `AboutSection.tsx:490` `bg-black/2[whitespace]0` → `bg-black/20` (`fixes.md` #3)
-- [ ] **Replace example.com project links** — projects 5 & 6 in data.ts (`fixes.md` #4)
+- [x] **Fix broken testimonial icons** — logos defined in data.ts but never rendered by component; not a runtime 404 (downgraded, cleaned up in audit)
+- [x] **Fix .gradient-primary / .text-gradient CSS** — classes never used in any component; not causing visible bugs (downgraded)
+- [x] **Fix corrupted Tailwind class** — `AboutSection.tsx:490` fixed: `bg-black/20` ✓ (2026-05-03)
+- [x] **Replace example.com project links** — projects 5 & 6 set to `#` pending real URLs (2026-05-03)
 
 ### P1 — Dead code & data consistency
-- [ ] Delete unused import `{ sub }` from `data.ts:7` (`fixes.md` #6)
+- [x] Delete unused import `{ sub }` from `data.ts:7` (`fixes.md` #6) — done 2026-05-03
 - [ ] Remove `const [, forceUpdate] = useState(0)` from `AboutSection.tsx:205` (`fixes.md` #7)
 - [ ] Remove `#__next` CSS block from `globals.css` (`fixes.md` #8)
 - [ ] Consolidate `contactData.socials` — fix `#` placeholders, have Footer read from there (`fixes.md` #5, #16)
