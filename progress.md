@@ -38,12 +38,12 @@
 
 ### P1 — Dead code & data consistency
 - [x] Delete unused import `{ sub }` from `data.ts:7` (`fixes.md` #6) — done 2026-05-03
-- [ ] Remove `const [, forceUpdate] = useState(0)` from `AboutSection.tsx:205` (`fixes.md` #7)
-- [ ] Remove `#__next` CSS block from `globals.css` (`fixes.md` #8)
-- [ ] Consolidate `contactData.socials` — fix `#` placeholders, have Footer read from there (`fixes.md` #5, #16)
+- [x] Remove `const [, forceUpdate] = useState(0)` from `AboutSection.tsx:205` (`fixes.md` #7) — done 2026-05-03
+- [x] Remove `#__next` CSS block from `globals.css` (`fixes.md` #8) — done 2026-05-03
+- [x] Consolidate `contactData.socials` — real URLs added, Footer reads from data.ts (`fixes.md` #5, #16) — done 2026-05-03
 - [ ] Wire `WhyMeSection.tsx` to use `whyMeData` from data.ts instead of local array (`fixes.md` #14)
-- [ ] Fix `SplashScreen.tsx` to use `heroData.name` (`fixes.md` #15)
-- [ ] Remove duplicate ticker item in `heroData.ticker` (`fixes.md` #17)
+- [x] Fix `SplashScreen.tsx` to use `heroData.name` + `heroData.badges[0]` (`fixes.md` #15) — done 2026-05-03
+- [x] Remove duplicate ticker item in `heroData.ticker` — replaced with 'Next.js Developer' (`fixes.md` #17) — done 2026-05-03
 
 ### P2 — Architecture / refactor
 - [ ] Fix `page.tsx` — extract `<SplashGate>` client component, remove `'use client'` from page.tsx (`fixes.md` #19)

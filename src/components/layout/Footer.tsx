@@ -2,27 +2,16 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Github, Instagram, Linkedin } from "lucide-react";
+import { contactData } from "@/lib/data";
+
+const socialLinks = [
+  { name: "GitHub",    icon: Github,    href: contactData.socials.github },
+  { name: "Instagram", icon: Instagram, href: contactData.socials.instagram },
+  { name: "LinkedIn",  icon: Linkedin,  href: contactData.socials.linkedin },
+];
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-
-  const socialLinks = [
-    {
-      name: "GitHub",
-      icon: Github,
-      href: "https://github.com/bagusgiovani-sys/",
-    },
-    {
-      name: "Instagram",
-      icon: Instagram,
-      href: "https://www.instagram.com/bagusgiovani/",
-    },
-    {
-      name: "LinkedIn",
-      icon: Linkedin,
-      href: "https://www.linkedin.com/in/bagus-giovani-938627357/",
-    },
-  ];
 
   return (
     <footer className="bg-stone-900/90 backdrop-blur-md py-8 md:py-6 px-4 md:px-8">

@@ -272,7 +272,6 @@ body {
   position: relative;
 }
 
-#__next,
 main {
   overflow-x: hidden;
   width: 100%;

@@ -21,7 +21,7 @@ export const heroData = {
   ticker: [
     'Product Engineer',
     'React Expert',
-    'Product Engineer',
+    'Next.js Developer',
     'UI/UX Focused',
   ],
   clientAvatars: [
@@ -380,9 +380,9 @@ export const contactData = {
   email: 'bagusgiovani@gmail.com',
   location: 'Jakarta, Indonesia',
   socials: {
-    github: '#',
-    instagram: '#',
-    linkedin: '#',
+    github: 'https://github.com/bagusgiovani-sys/',
+    instagram: 'https://www.instagram.com/bagusgiovani/',
+    linkedin: 'https://www.linkedin.com/in/bagus-giovani-938627357/',
   },
 }
 

@@ -202,7 +202,6 @@ function DraggableTicker({
   const animFrameRef = useRef<number>(0);
   const isDragging = useRef(false);
   const speedRef = useRef(reverse ? -0.4 : 0.4);
-  const [, forceUpdate] = useState(0);
 
   // auto-scroll
   useEffect(() => {

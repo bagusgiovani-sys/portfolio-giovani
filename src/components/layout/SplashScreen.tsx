@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { heroData } from "@/lib/data";
 
 interface SplashScreenProps {
   onDone: () => void;
@@ -68,7 +69,7 @@ export default function SplashScreen({ onDone }: SplashScreenProps) {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
             className="text-foreground font-bold text-4xl tracking-tight"
           >
-            Bagus Giovani
+            {heroData.name}
           </motion.h1>
           <motion.p
             initial={{ y: 20, opacity: 0 }}
@@ -76,7 +77,7 @@ export default function SplashScreen({ onDone }: SplashScreenProps) {
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.55 }}
             className="text-muted-foreground text-sm"
           >
-            Frontend Engineer
+            {heroData.badges[0]}
           </motion.p>
         </div>
 
