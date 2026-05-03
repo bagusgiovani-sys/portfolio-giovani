@@ -1,10 +1,4 @@
-// src/app/page.tsx
-
-'use client'
-
-import { useState } from 'react' 
-import { AnimatePresence } from 'framer-motion'
-import SplashScreen from '@/components/layout/SplashScreen'
+import SplashGate from '@/components/layout/SplashGate'
 import HeroSection from '@/components/sections/HeroSection'
 import AboutSection from '@/components/sections/AboutSection'
 import SkillSection from '@/components/sections/SkillSection'
@@ -15,31 +9,18 @@ import TestimonialsSection from '@/components/sections/TestimonialSection'
 import FAQSection from '@/components/sections/FAQSection'
 import ContactSection from '@/components/sections/ContactSection'
 
-
 export default function Home() {
-  const [showSplash, setShowSplash] = useState(true);
-
   return (
-    <>
-      <AnimatePresence mode='wait'>
-        {showSplash && (
-          <SplashScreen key="Splash" onDone={() => setShowSplash(false)} />
-        )}
-      </AnimatePresence>
-
-      {!showSplash && (
-        <>
-          <HeroSection />
-          <AboutSection />
-          <SkillSection />
-          <WhyMeSection />
-          <ProjectSection />
-          <ExperienceSection />
-          <TestimonialsSection />
-          <FAQSection />
-          <ContactSection />
-        </>
-      )}
-    </> 
+    <SplashGate>
+      <HeroSection />
+      <AboutSection />
+      <SkillSection />
+      <WhyMeSection />
+      <ProjectSection />
+      <ExperienceSection />
+      <TestimonialsSection />
+      <FAQSection />
+      <ContactSection />
+    </SplashGate>
   )
 }

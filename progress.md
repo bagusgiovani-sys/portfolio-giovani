@@ -46,11 +46,11 @@
 - [x] Remove duplicate ticker item in `heroData.ticker` — replaced with 'Next.js Developer' (`fixes.md` #17) — done 2026-05-03
 
 ### P2 — Architecture / refactor
-- [ ] Fix `page.tsx` — extract `<SplashGate>` client component, remove `'use client'` from page.tsx (`fixes.md` #19)
-- [ ] Resolve dual CSS token system (brand tokens vs shadcn OKLCh) (`fixes.md` #20)
-- [ ] Pick one dark mode mechanism — remove unused `.dark` class or `@media` block (`fixes.md` #21)
-- [ ] Extract `<CardCarousel>` component from SkillSection + ProjectSection (`fixes.md` #12)
-- [ ] Move `NavButton` to `src/components/ui/NavButton.tsx` (`fixes.md` #11)
+- [x] Fix `page.tsx` — `<SplashGate>` client component created; page.tsx is now a server component (`fixes.md` #19) — done 2026-05-04
+- [x] Resolve dual CSS token system — removed 8 dead semantic tokens from `@theme` (overridden by `@theme inline`); fixed `.gradient-primary`/`.text-gradient` to use valid primary tokens (`fixes.md` #20) — done 2026-05-04
+- [x] Dark mode — kept `@custom-variant dark` (used by Skeleton `dark:` utility); removed dead color vars from dark `@media` block, kept shadow overrides (`fixes.md` #21) — done 2026-05-04
+- [x] Extract `<CardCarousel>` — generic render-prop carousel; SkillSection and ProjectSection now ~60% smaller (`fixes.md` #12) — done 2026-05-04
+- [x] Move `NavButton` to `src/components/ui/NavButton.tsx` (`fixes.md` #11) — done 2026-05-04
 - [ ] Extract `<ContactInfoList>` from ContactSection (`fixes.md` #13)
 - [ ] Move Formspree endpoint to `.env.local` as `NEXT_PUBLIC_FORMSPREE_URL`
 
