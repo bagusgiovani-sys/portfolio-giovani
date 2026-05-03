@@ -588,7 +588,7 @@ export default function AboutSection() {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
             className="relative bg-gradient-to-br from-brand-three to-brand-four rounded-3xl overflow-hidden h-[450px] md:h-[550px]"
-            style={{ cursor: "none", touchAction: "none" }}
+            style={{ cursor: "zoom-in", touchAction: "none" }}
           >
             <MapCardScene stats={stats} pulse />
 

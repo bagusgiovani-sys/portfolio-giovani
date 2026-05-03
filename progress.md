@@ -55,12 +55,12 @@
 - [ ] Move Formspree endpoint to `.env.local` as `NEXT_PUBLIC_FORMSPREE_URL`
 
 ### P3 — Performance & accessibility
-- [ ] Debounce resize listener in `HeroSection.tsx` (`fixes.md` #22)
-- [ ] Replace `<img>` with `<Image>` for profile photo in HeroSection (`fixes.md` #23)
-- [ ] Add `@media (prefers-reduced-motion)` for ticker animations (`fixes.md` #25)
-- [ ] Fix `cursor: none` → `cursor: zoom-in` on map card (`fixes.md` #24)
-- [ ] Add sr-only text to star ratings (`fixes.md` #26)
-- [ ] Add `role="alertdialog"` to contact form modal (`fixes.md` #27)
+- [x] Debounce resize listener in `HeroSection.tsx` (`fixes.md` #22) — done 2026-05-03
+- [x] Replace `<img>` with `<Image>` for profile photo in HeroSection (`fixes.md` #23) — done 2026-05-03
+- [x] Add `@media (prefers-reduced-motion)` for ticker animations (`fixes.md` #25) — added to `globals.css` 2026-05-03
+- [x] Fix `cursor: none` → `cursor: zoom-in` on map card (`fixes.md` #24) — `AboutSection.tsx:591` done 2026-05-03
+- [x] Add aria-label to star ratings in HeroSection + TestimonialsSection (`fixes.md` #26) — done 2026-05-03
+- [x] Add `role="alertdialog"` + `aria-modal` + `aria-labelledby` to contact form modal (`fixes.md` #27) — `ContactSection.tsx` done 2026-05-03
 
 ### P4 — SEO & polish
 - [ ] Add OpenGraph + Twitter card metadata in `layout.tsx`
@@ -76,4 +76,4 @@
 
 ---
 
-*Last updated: 2026-05-03*
+*Last updated: 2026-05-03 (P3 complete)*
