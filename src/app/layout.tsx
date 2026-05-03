@@ -12,9 +12,24 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://portfolio-giovani.vercel.app'),
   title: 'Bagus Giovani — Frontend Developer',
   description:
     'Portfolio of Bagus Giovani, a Frontend Developer specializing in React, TypeScript, and Next.js.',
+  openGraph: {
+    type: 'website',
+    url: '/',
+    title: 'Bagus Giovani — Frontend Developer',
+    description:
+      'Portfolio of Bagus Giovani, a Frontend Developer specializing in React, TypeScript, and Next.js.',
+    siteName: 'Bagus Giovani Portfolio',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Bagus Giovani — Frontend Developer',
+    description:
+      'Portfolio of Bagus Giovani, a Frontend Developer specializing in React, TypeScript, and Next.js.',
+  },
 }
 
 export default function RootLayout({

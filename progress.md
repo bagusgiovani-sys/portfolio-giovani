@@ -63,11 +63,11 @@
 - [x] Add `role="alertdialog"` + `aria-modal` + `aria-labelledby` to contact form modal (`fixes.md` #27) — `ContactSection.tsx` done 2026-05-03
 
 ### P4 — SEO & polish
-- [ ] Add OpenGraph + Twitter card metadata in `layout.tsx`
-- [ ] Add `robots.txt` and `sitemap.xml` to `/public`
-- [ ] Update README.md — replace Next.js boilerplate with actual project docs
-- [ ] Remove unused shadcn sidebar/chart CSS tokens from globals.css (`fixes.md` #9)
-- [ ] Remove dead `footerData` export or wire it up (`fixes.md` #10)
+- [x] Add OpenGraph + Twitter card metadata in `layout.tsx` — done 2026-05-03; metadataBase set to portfolio-giovani.vercel.app
+- [x] Add `robots.txt` and `sitemap.xml` to `/public` — done 2026-05-03
+- [x] Update README.md — replaced Next.js boilerplate with actual project docs 2026-05-03
+- [x] Remove unused shadcn sidebar/chart CSS tokens from globals.css (`fixes.md` #9) — done 2026-05-03
+- [x] Remove dead `footerData` export (`fixes.md` #10) — removed from `data.ts` 2026-05-03
 
 ### P5 — Future
 - [ ] Add unit/integration tests (Vitest + Testing Library)
@@ -76,4 +76,4 @@
 
 ---
 
-*Last updated: 2026-05-03 (P2 + P3 complete)*
+*Last updated: 2026-05-03 (P2 + P3 + P4 complete)*

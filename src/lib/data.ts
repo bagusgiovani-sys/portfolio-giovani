@@ -437,9 +437,3 @@ export const navLinks: NavLink[] = [
   { label: 'Contact', href: '#contact' },
 ]
 
-// ─── Footer ──────────────────────────────────────────────────
-
-export const footerData = {
-  logo: 'Your Logo',
-  copyright: '© 2025 Bagus Giovani. All rights reserved.',
-}
