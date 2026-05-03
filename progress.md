@@ -1,0 +1,79 @@
+# progress.md — Development Log
+
+---
+
+## Session: 2026-05-03
+
+### Completed this session
+- [x] Full codebase audit — all files read and analyzed
+- [x] Created `CLAUDE.md` — architecture guide, commands, known issues
+- [x] Created `fixes.md` — 27 issues catalogued with file paths and fixes
+- [x] Architecture scored at **6.0 / 10** (see rating breakdown below)
+
+### Architecture Rating — 2026-05-03
+
+| Dimension | Score | Notes |
+|-----------|-------|-------|
+| Folder structure | 7/10 | Clean Next.js layout; missing types/ dir |
+| Component design | 6/10 | Carousel pattern duplicated; page.tsx forces CSR |
+| Data management | 7/10 | Good data.ts pattern; several components ignore it |
+| Code quality | 6/10 | Dead import, dead code, placeholder data in prod |
+| CSS / design system | 5/10 | Two conflicting token systems; 3 dark mode mechanisms |
+| Performance | 6/10 | Unoptimized img tag, no debounce, infinite loops |
+| Accessibility | 4/10 | No reduced-motion, cursor:none, no ARIA on modal |
+| TypeScript | 7/10 | Strict mode; satisfies keyword; some casts |
+| SEO | 5/10 | Only basic title/description; no OG/Twitter/sitemap |
+| Testing | 0/10 | No tests at all |
+| **Overall** | **~6/10** | |
+
+---
+
+## To-Do List (prioritized)
+
+### P0 — Broken in production right now
+- [ ] **Fix broken testimonial icons** — create `/public/assets/icons/feedback/` with peer.svg, mentor.svg, user.svg (`fixes.md` #1)
+- [ ] **Fix .gradient-primary / .text-gradient CSS** — add missing `--color-primary-700`/`--color-primary-500` tokens (`fixes.md` #2)
+- [ ] **Fix corrupted Tailwind class** — `AboutSection.tsx:490` `bg-black/2[whitespace]0` → `bg-black/20` (`fixes.md` #3)
+- [ ] **Replace example.com project links** — projects 5 & 6 in data.ts (`fixes.md` #4)
+
+### P1 — Dead code & data consistency
+- [ ] Delete unused import `{ sub }` from `data.ts:7` (`fixes.md` #6)
+- [ ] Remove `const [, forceUpdate] = useState(0)` from `AboutSection.tsx:205` (`fixes.md` #7)
+- [ ] Remove `#__next` CSS block from `globals.css` (`fixes.md` #8)
+- [ ] Consolidate `contactData.socials` — fix `#` placeholders, have Footer read from there (`fixes.md` #5, #16)
+- [ ] Wire `WhyMeSection.tsx` to use `whyMeData` from data.ts instead of local array (`fixes.md` #14)
+- [ ] Fix `SplashScreen.tsx` to use `heroData.name` (`fixes.md` #15)
+- [ ] Remove duplicate ticker item in `heroData.ticker` (`fixes.md` #17)
+
+### P2 — Architecture / refactor
+- [ ] Fix `page.tsx` — extract `<SplashGate>` client component, remove `'use client'` from page.tsx (`fixes.md` #19)
+- [ ] Resolve dual CSS token system (brand tokens vs shadcn OKLCh) (`fixes.md` #20)
+- [ ] Pick one dark mode mechanism — remove unused `.dark` class or `@media` block (`fixes.md` #21)
+- [ ] Extract `<CardCarousel>` component from SkillSection + ProjectSection (`fixes.md` #12)
+- [ ] Move `NavButton` to `src/components/ui/NavButton.tsx` (`fixes.md` #11)
+- [ ] Extract `<ContactInfoList>` from ContactSection (`fixes.md` #13)
+- [ ] Move Formspree endpoint to `.env.local` as `NEXT_PUBLIC_FORMSPREE_URL`
+
+### P3 — Performance & accessibility
+- [ ] Debounce resize listener in `HeroSection.tsx` (`fixes.md` #22)
+- [ ] Replace `<img>` with `<Image>` for profile photo in HeroSection (`fixes.md` #23)
+- [ ] Add `@media (prefers-reduced-motion)` for ticker animations (`fixes.md` #25)
+- [ ] Fix `cursor: none` → `cursor: zoom-in` on map card (`fixes.md` #24)
+- [ ] Add sr-only text to star ratings (`fixes.md` #26)
+- [ ] Add `role="alertdialog"` to contact form modal (`fixes.md` #27)
+
+### P4 — SEO & polish
+- [ ] Add OpenGraph + Twitter card metadata in `layout.tsx`
+- [ ] Add `robots.txt` and `sitemap.xml` to `/public`
+- [ ] Update README.md — replace Next.js boilerplate with actual project docs
+- [ ] Remove unused shadcn sidebar/chart CSS tokens from globals.css (`fixes.md` #9)
+- [ ] Remove dead `footerData` export or wire it up (`fixes.md` #10)
+
+### P5 — Future
+- [ ] Add unit/integration tests (Vitest + Testing Library)
+- [ ] Add Lighthouse CI to track performance scores
+- [ ] Consider adding a resume/CV download link
+
+---
+
+*Last updated: 2026-05-03*
