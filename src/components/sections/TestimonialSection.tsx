@@ -75,11 +75,12 @@ export default function TestimonialsSection() {
                 {active.text}
               </p>
 
-              <div className="flex gap-1 justify-center mb-6">
+              <div className="flex gap-1 justify-center mb-6" aria-label={`${active.rating} out of 5 stars`}>
                 {[...Array(active.rating)].map((_, i) => (
                   <Star
                     key={i}
                     className="w-7 h-7 fill-amber-500 text-amber-500"
+                    aria-hidden="true"
                   />
                 ))}
               </div>

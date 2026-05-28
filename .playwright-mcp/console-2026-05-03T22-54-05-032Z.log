@@ -1,0 +1,18 @@
+[     652ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[     814ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[    5046ms] [WARNING] Image with src "/assets/PaleoLink.gif" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[    5046ms] [WARNING] Image with src "/assets/PaleoLink.gif" has "fill" and a height value of 0. This is likely because the parent element of the image has not been styled to have a set height. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[    5047ms] [WARNING] Image with src "http://localhost:3000/assets/images/CardBackground/image-6.svg" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[    5047ms] [WARNING] Image with src "http://localhost:3000/assets/images/CardBackground/image-6.svg" has "fill" and a height value of 0. This is likely because the parent element of the image has not been styled to have a set height. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[    5058ms] [WARNING] Image with src "/assets/sociality.gif" has "fill" and parent element with invalid "position". Provided "static" should be one of absolute,fixed,relative. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[    5058ms] [WARNING] Image with src "/assets/sociality.gif" has "fill" and a height value of 0. This is likely because the parent element of the image has not been styled to have a set height. @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  248976ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  250526ms] [LOG] [Fast Refresh] done in 1647ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  250860ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  250916ms] [LOG] [Fast Refresh] done in 166ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  250942ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/:0
+[  251628ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_react-dom_4411d9bd._.js:15305
+[  251788ms] Error: An unexpected Turbopack error occurred. Please see the output of `next dev` for more details.
+    at getServerError (http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:2050:62)
+    at http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_5a8a528e._.js:3604:27
+[  251786ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b3fb3b5f._.js:1206

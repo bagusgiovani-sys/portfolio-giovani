@@ -17,11 +17,11 @@ export const heroData = {
     clients: '15+',
     clientsLabel: 'Global Clients',
   },
-  badges: ['Frontend Developer', 'React Expert'],
+  badges: ['Frontend | Product Engineer', 'React Expert'],
   ticker: [
     'Product Engineer',
-    'React Expert',
-    'Next.js Developer',
+    'Typescript',
+    'React/Next.js Full-Stack Developer',
     'UI/UX Focused',
   ],
   clientAvatars: [

@@ -162,10 +162,10 @@ export default function HeroSection() {
           }}
           className="absolute bottom-26 lg:bottom-10 left-2 lg:left-[22%] lg:scale-120"
         >
-          <GlassCard className="w-48 px-2 py-3">
+          <GlassCard className="w-52 px-2 py-3">
             {heroData.badges.map((badge) => (
               <span key={badge} className="inline-flex items-center gap-2 mt-2 text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.8)]">
-                {badge === 'Frontend Developer' && (
+                {badge === 'Frontend | Product Engineer' && (
                   <span className="text-[13px] font-bold">{badge}</span>
                 )}
                 {badge === 'React Expert' && (
@@ -193,7 +193,7 @@ export default function HeroSection() {
       >
         <div className="bg-(--color-brand-four) overflow-hidden py-3 md:py-4 shadow-lg">
           <div className="flex gap-8 animate-ticker-mobile md:animate-ticker-pc whitespace-nowrap">
-            {[...heroData.ticker, ...heroData.ticker].map((item, i) => (
+            {[...heroData.ticker, ...heroData.ticker, ...heroData.ticker, ...heroData.ticker, ...heroData.ticker].map((item, i) => (
               <span
                 key={i}
                 className="inline-flex items-center gap-3 text-gray-700 text-[20px] lg:text-[30px] font-semibold shrink-0"

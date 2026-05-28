@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Exodus\\\\Projects\\\\portfolio-giovani\" -Force -Recurse)",
+      "Bash(Select-Object -Property FullName)",
+      "Bash(Sort-Object FullName)",
+      "Bash(ConvertTo-Csv -NoTypeInformation)",
+      "Bash(Out-String)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git pull *)",
+      "Bash(git stash *)",
+      "Bash(npm run *)",
+      "Bash(node -e \"require\\('tw-animate-css'\\)\")",
+      "Bash(findstr tw *)",
+      "Bash(npx tsc *)",
+      "Bash(git restore *)",
+      "Bash(git remote *)",
+      "PowerShell(Get-Process *)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\({k: d[k] for k in ['main','module','exports','style'] if k in d}, indent=2\\)\\)\")",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "mcp__plugin_playwright_playwright__browser_console_messages",
+      "mcp__plugin_playwright_playwright__browser_evaluate"
+    ]
+  }
+}
