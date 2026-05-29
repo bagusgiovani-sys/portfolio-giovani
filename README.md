@@ -1,8 +1,7 @@
 # Bagus Giovani — Frontend Engineer
 
 > Scalable React/Next.js architecture. Pixel-perfect UI. Production-hardened.
-
-Frontend engineer who builds things that hold up under pressure. I shipped an Instagram clone with optimistic UI and centralized error handling — then debugged a broken API live in production. I use AI as a tool. I own every architectural decision.
+# needs to be fixed
 
 **[→ View the live portfolio](https://portfolio-giovani.vercel.app)**
 
