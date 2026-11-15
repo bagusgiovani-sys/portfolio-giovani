@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { useSwipe } from '@/hooks/useSwipe'
 import NavButton from '@/components/ui/NavButton'
 
@@ -16,6 +16,7 @@ export interface CardSlotProps {
 interface CardCarouselProps<T> {
   items: T[]
   renderCard: (item: T, slotProps: CardSlotProps) => React.ReactNode
+  renderDetails?: (item: T) => React.ReactNode
   skeleton: React.ReactNode
 }
 
@@ -35,7 +36,9 @@ export default function CardCarousel<T>({
   items,
   renderCard,
   skeleton,
+  renderDetails,
 }: CardCarouselProps<T>) {
+  const reduceMotion = useReducedMotion()
   const [mounted, setMounted] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [direction, setDirection] = useState(0)
@@ -149,10 +152,27 @@ export default function CardCarousel<T>({
             className={`h-2 rounded-full transition-all ${
               currentIndex === index ? 'w-8 bg-brand-one' : 'w-2 bg-muted-foreground/30'
             }`}
+            aria-current={currentIndex === index ? true : undefined}
             aria-label={`Go to item ${index + 1}`}
           />
         ))}
       </div>
+      {renderDetails && mounted && (
+        <div className="mx-auto mt-6 max-w-3xl" aria-live="polite">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={currentIndex}
+              initial={{ height: 0, opacity: 0, y: reduceMotion ? 0 : -12 }}
+              animate={{ height: 'auto', opacity: 1, y: 0 }}
+              exit={{ height: 0, opacity: 0, y: reduceMotion ? 0 : -12 }}
+              transition={{ duration: reduceMotion ? 0 : 0.3, ease: 'easeInOut' }}
+              className="overflow-hidden"
+            >
+              {renderDetails(items[currentIndex])}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      )}
     </>
   )
 }

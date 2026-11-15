@@ -239,30 +239,6 @@ export const projectsData = {
       image: '/assets/movieapp.gif',
       link: 'https://movie-app-by-giovani.vercel.app//',
     },
-    {
-      id: 4,
-      title: 'Booky App',
-      category: 'Admin & User Web App',
-      year: '2026',
-      image: '/assets/Booky.png',
-      link: 'https://booky-app-by-gio.vercel.app/',
-    },
-    {
-      id: 5,
-      title: '3D Portfolio',
-      category: 'Landing Page',
-      year: '2025',
-      image: '/assets/images/CardBackground/image-5.svg',
-      link: '#',
-    },
-    {
-      id: 6,
-      title: 'Foody App',
-      category: 'Food Commerce Web App',
-      year: '2026',
-      image: '/assets/images/CardBackground/image-6.svg',
-      link: '#',
-    },
   ] satisfies Project[],
 }
 
